@@ -77,9 +77,13 @@ func _process(delta):
 		get_child(0).set_texture_by_state(currentState)
 		
 	if Input.is_key_pressed(KEY_ENTER) and timerTeleport.time_left == 0.0:
+		var newPosition = get_teleport_position()
+		if newPosition == Vector2(-1, -1):
+			return
+		position = newPosition
 		timerTeleport.one_shot = true
 		timerTeleport.start(teleportCooldown)
-		position = get_teleport_position()
+		
 	
 	flip_sprite_with_direction()
 		
@@ -90,13 +94,15 @@ func flip_sprite_with_direction():
 	elif velocity.x < 0:
 		skin.scale.x = abs(skin.scale.x)
 
+
+
 func get_teleport_position():
 	for teleport in teleportsNode.get_children():
 		if teleport.get_distance_to_mc() > teleportEffectiveDistance:
 			continue
 		var teleportPoints = teleport.get_sorted_by_distance()
 		return teleportPoints[1].position
-			
+	return Vector2(-1, -1)
 		
 func inverse_current_state():
 	if currentState == State.WOLFSKIN:

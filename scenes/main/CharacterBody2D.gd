@@ -52,17 +52,20 @@ func get_input():
 
 func _physics_process(delta):
 	get_input()
-	
 	var result = move_and_slide()
-	
 	if not result:
 		return
+	resolve_collisions()
 
+
+func resolve_collisions():
 	for i in get_slide_collision_count():
 		var col = get_slide_collision(i)
-		if col.get_collider() is RigidBody2D:
-			col.get_collider().apply_force(col.get_normal() * -force)
-	
+		
+		if not col.get_collider() is RigidBody2D:
+			continue
+		
+		col.get_collider().apply_force(col.get_normal() * -force)
 
 func _process(delta):
 	if Input.is_key_pressed(KEY_SPACE) and timerSkinChange.time_left == 0.0:
@@ -80,9 +83,9 @@ func _process(delta):
 		
 func get_teleport_position():
 	for teleport in teleportsNode.get_children():
-		if teleport.getDistanceToMC() > teleportEffectiveDistance:
+		if teleport.get_distance_to_mc() > teleportEffectiveDistance:
 			continue
-		var teleportPoints = teleport.getSortedByDistance()
+		var teleportPoints = teleport.get_sorted_by_distance()
 		return teleportPoints[1].position
 			
 		

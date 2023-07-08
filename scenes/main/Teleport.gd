@@ -26,7 +26,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	updateDistanceToMC()
+	update_distance_to_mc()
 	if distanceToMC < highlightDistance:
 		pointA.get_child(0).enableHighlight()
 		pointB.get_child(0).enableHighlight()
@@ -35,16 +35,16 @@ func _process(delta):
 		pointB.get_child(0).disableHighlight()	
 	#pass
 
-func updateDistanceToMC():
+func update_distance_to_mc():
 	distanceToA = pointA.position.distance_to(mainCharacter.position)
 	distanceToB = pointB.position.distance_to(mainCharacter.position)
 	
 	distanceToMC = min(distanceToA, distanceToB)
 	
-func getDistanceToMC():
+func get_distance_to_mc():
 	return distanceToMC
 
-func getSortedByDistance():
+func get_sorted_by_distance():
 	if distanceToA > distanceToB:
 		return [pointB, pointA]
 	else:

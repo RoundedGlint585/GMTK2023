@@ -5,12 +5,10 @@ enum State {WOLFSKIN, SHEEPSKIN}
 const SPEED = 100.0
 
 @export
-var bushPunchingForce = 1000; #heuristic 
+var bushPunchingForce = 1000 #heuristic 
 
 @export
-var stopDistance = 150;
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var stopDistance = 150
 
 var canSeeWolf = true
 
@@ -56,14 +54,21 @@ func _integrate_forces(state):
 		return
 		
 	if finalSlot != null: #when finished
-		var distance = position.distance_to(finalSlot.position)
-		if distance < 10.0:
-			isFreezed = true
-		if not isFreezed:
-			set_linear_velocity(position.direction_to(finalSlot.global_position) * 50)
-			# works but why?
+		resolve_movement_to_finish()
 		return
 		
+	resolve_movement_relatively_to_mc()
+		
+	
+func resolve_movement_to_finish():
+	var distance = position.distance_to(finalSlot.position)
+	if distance < 10.0:
+		isFreezed = true
+	if not isFreezed:
+		set_linear_velocity(position.direction_to(finalSlot.global_position) * 50)
+		# works but why?
+
+func resolve_movement_relatively_to_mc():
 	var mcCurrentState = mainCharacter.get_current_state()
 	var velocity = 0.0
 	var distanceToMC = position.distance_to(mainCharacter.position)
@@ -74,8 +79,8 @@ func _integrate_forces(state):
 			direction = Vector2(0, 0)
 			break
 	set_linear_velocity(direction * SPEED)
-		
-	
+
+
 func _process(delta):
 	pass
 	

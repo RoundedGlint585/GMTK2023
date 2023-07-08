@@ -18,6 +18,8 @@ var finalSlot = null
 
 @onready 
 var mainCharacter: CharacterBody2D = get_tree().get_first_node_in_group("MainCharacter")
+@onready var skin = $Skin
+
 
 func _physics_process(delta):
 	check_wolf_visibility()
@@ -32,7 +34,7 @@ func check_and_apply_bush_collision():
 	for body in get_colliding_bodies():
 		var groups = body.get_groups()
 		if body.is_in_group("Bush"):
-			apply_impulse(-linear_velocity.normalized() * bushPunchingForce) #not cool. but static area can't detect collisions with rigidbody properly
+			pass#apply_impulse(-linear_velocity.normalized() * bushPunchingForce) #not cool. but static area can't detect collisions with rigidbody properly
 
 		
 func check_wolf_visibility():
@@ -62,7 +64,7 @@ func _integrate_forces(state):
 	
 func resolve_movement_to_finish():
 	var distance = position.distance_to(finalSlot.position)
-	if distance < 10.0:
+	if distance < 30.0:
 		isFreezed = true
 	if not isFreezed:
 		set_linear_velocity(position.direction_to(finalSlot.global_position) * 50)
@@ -82,8 +84,16 @@ func resolve_movement_relatively_to_mc():
 
 
 func _process(delta):
-	pass
-	
+	flip_sprite_with_direction()
+
+
+func flip_sprite_with_direction():
+	if isFreezed:
+		return
+	if linear_velocity.x > 0:  # sprite direction
+		skin.scale.x = -abs(skin.scale.x)
+	elif linear_velocity.x < 0:
+		skin.scale.x = abs(skin.scale.x)
 
 func freeze_sheep():
 	isFreezed = true

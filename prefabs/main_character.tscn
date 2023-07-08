@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://d12g5oic6ggew"]
+[gd_scene load_steps=6 format=3 uid="uid://d12g5oic6ggew"]
 
 [ext_resource type="Script" path="res://scenes/main/CharacterBody2D.gd" id="1_oas8h"]
-[ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="2_3nuu1"]
 [ext_resource type="Script" path="res://scenes/main/MCSkinBehaviour.gd" id="3_xxbcg"]
+[ext_resource type="Texture2D" uid="uid://g83dvej4gmtb" path="res://sprites/wolf_normal.png" id="4_84ks4"]
+[ext_resource type="Texture2D" uid="uid://cbt0i8gesy3xs" path="res://sprites/wolf_sheep.png" id="5_3m386"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_68uj1"]
-size = Vector2(146, 132)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5u3u"]
+radius = 51.5151
+height = 173.697
 
 [node name="MainCharacter" type="CharacterBody2D" groups=["MainCharacter"]]
+y_sort_enabled = true
 position = Vector2(557, 298)
 scale = Vector2(0.33, 0.33)
 disable_mode = 2
@@ -18,9 +21,16 @@ script = ExtResource("1_oas8h")
 force = 5000
 
 [node name="Skin" type="Sprite2D" parent="."]
-texture = ExtResource("2_3nuu1")
+y_sort_enabled = true
+position = Vector2(3.03027, 6.06055)
+scale = Vector2(0.342424, 0.342424)
+texture = ExtResource("5_3m386")
 script = ExtResource("3_xxbcg")
+wolfSkin = ExtResource("4_84ks4")
+sheepSkin = ExtResource("5_3m386")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
 position = Vector2(2, 0)
-shape = SubResource("RectangleShape2D_68uj1")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_h5u3u")

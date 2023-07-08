@@ -1,8 +1,8 @@
 extends Sprite2D
 
 
-var wolfSkin = preload("res://icon.svg")
-var sheepSkin = preload("res://icon.svg")
+@export var wolfSkin : Texture2D
+@export var sheepSkin : Texture2D
 
 enum State {WOLFSKIN, SHEEPSKIN}
 
@@ -18,10 +18,10 @@ func _process(delta):
 	
 func set_texture_by_state(state):
 	if state == State.WOLFSKIN:
-		set_texture(sheepSkin)
+		set_texture(wolfSkin)
 		modulate = Color(1.0, 0.0, 0.0)
 	else:
-		set_texture(wolfSkin)
+		set_texture(sheepSkin)
 		modulate = Color(0.0, 1.0, 0.0)
 
 	

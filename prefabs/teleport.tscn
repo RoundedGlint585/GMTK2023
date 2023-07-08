@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/main/Teleport.gd" id="1_ihafg"]
 [ext_resource type="Shader" path="res://scenes/main/EdgeOutline.gdshader" id="2_w3hy1"]
-[ext_resource type="Texture2D" uid="uid://bg16n8tym78ud" path="res://sprites/Black.png" id="3_xpdnl"]
+[ext_resource type="Texture2D" uid="uid://uc4so1fk1d6a" path="res://sprites/hole.png" id="3_05510"]
 [ext_resource type="Script" path="res://scenes/main/TeleportSpriteBehaviour.gd" id="4_fcwuk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_huqxc"]
@@ -27,19 +27,22 @@ shader_parameter/strength = 0.268
 script = ExtResource("1_ihafg")
 
 [node name="PointA" type="Node2D" parent="."]
+z_index = -10
 position = Vector2(306, 221)
 
 [node name="TeleportSprite" type="Sprite2D" parent="PointA"]
 material = SubResource("ShaderMaterial_huqxc")
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_xpdnl")
+position = Vector2(-4, 4)
+scale = Vector2(0.159, 0.159)
+texture = ExtResource("3_05510")
 script = ExtResource("4_fcwuk")
 
 [node name="PointB" type="Node2D" parent="."]
+z_index = -10
 position = Vector2(635, 506)
 
 [node name="TeleportSprite" type="Sprite2D" parent="PointB"]
 material = SubResource("ShaderMaterial_k5tkt")
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_xpdnl")
+scale = Vector2(0.159, 0.159)
+texture = ExtResource("3_05510")
 script = ExtResource("4_fcwuk")

@@ -1,20 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://bl7kmv1cyrida"]
+[gd_scene load_steps=11 format=3 uid="uid://bl7kmv1cyrida"]
 
 [ext_resource type="PackedScene" uid="uid://d12g5oic6ggew" path="res://prefabs/main_character.tscn" id="1_4bqfn"]
 [ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="1_pe6fa"]
 [ext_resource type="PackedScene" uid="uid://bf6cg5oa8enfd" path="res://prefabs/sheep.tscn" id="2_gqhbr"]
 [ext_resource type="Script" path="res://scenes/main/SheepBehaviour.gd" id="4_g3a3p"]
 [ext_resource type="PackedScene" uid="uid://bhx4x2sder7nq" path="res://prefabs/teleport.tscn" id="5_r5w3f"]
-[ext_resource type="PackedScene" uid="uid://dxkj7fin3n681" path="res://prefabs/bush.tscn" id="6_jbaeh"]
-[ext_resource type="Script" path="res://scenes/main/LevelFinish.gd" id="7_773yn"]
+[ext_resource type="PackedScene" uid="uid://dxkj7fin3n681" path="res://prefabs/agressive_bush.tscn" id="6_jbaeh"]
+[ext_resource type="PackedScene" uid="uid://cshq7vxqct218" path="res://prefabs/level_finish.tscn" id="7_cnbbl"]
 [ext_resource type="Texture2D" uid="uid://bg16n8tym78ud" path="res://sprites/Black.png" id="7_egch2"]
-[ext_resource type="Script" path="res://scenes/main/Slot.gd" id="9_uxxvj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54alj"]
 size = Vector2(127, 126)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8t1o"]
-size = Vector2(284, 175)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3x47"]
+size = Vector2(125, 127)
 
 [node name="Main" type="Node2D"]
 
@@ -39,47 +38,26 @@ texture = ExtResource("1_pe6fa")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_54alj")
 
+[node name="Bush" parent="." instance=ExtResource("6_jbaeh")]
+position = Vector2(334, 444)
+
 [node name="Teleports" type="Node2D" parent="." groups=["Teleports"]]
 position = Vector2(557, 298)
 scale = Vector2(0.33, 0.33)
 
 [node name="Teleport" parent="Teleports" instance=ExtResource("5_r5w3f")]
 
-[node name="Bush" parent="." instance=ExtResource("6_jbaeh")]
+[node name="LevelFinish" parent="." instance=ExtResource("7_cnbbl")]
+position = Vector2(1153, 207)
 
-[node name="LevelFinish" type="Area2D" parent="." groups=["LevelFinish"]]
-position = Vector2(162, 207)
-script = ExtResource("7_773yn")
+[node name="PassiveBush" type="StaticBody2D" parent="."]
+position = Vector2(435, 207)
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelFinish"]
-position = Vector2(1, -0.5)
-shape = SubResource("RectangleShape2D_r8t1o")
-
-[node name="Sprite" type="Sprite2D" parent="LevelFinish"]
-position = Vector2(-3.8147e-05, 1.00001)
-scale = Vector2(2.20312, 1.34375)
+[node name="Sprite2D" type="Sprite2D" parent="PassiveBush"]
 texture = ExtResource("7_egch2")
 
-[node name="Slot0" type="Node2D" parent="LevelFinish" groups=["Slot"]]
-position = Vector2(80, -61)
-script = ExtResource("9_uxxvj")
-
-[node name="Slot1" type="Node2D" parent="LevelFinish" groups=["Slot"]]
-position = Vector2(-98, 2)
-script = ExtResource("9_uxxvj")
-
-[node name="Slot2" type="Node2D" parent="LevelFinish" groups=["Slot"]]
-position = Vector2(57, 50)
-script = ExtResource("9_uxxvj")
-
-[node name="Slot3" type="Node2D" parent="LevelFinish" groups=["Slot"]]
-position = Vector2(-39, -62)
-script = ExtResource("9_uxxvj")
-
-[node name="Slot4" type="Node2D" parent="LevelFinish" groups=["Slot"]]
-position = Vector2(-41, 68)
-script = ExtResource("9_uxxvj")
-
-[node name="Slot5" type="Node2D" parent="LevelFinish" groups=["Slot"]]
-position = Vector2(100, 0)
-script = ExtResource("9_uxxvj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PassiveBush"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_n3x47")

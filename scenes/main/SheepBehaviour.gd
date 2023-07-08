@@ -14,20 +14,30 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var canSeeWolf = true
 
+var isFreezed = false
+
+var finalSlot = null
+
 @onready 
 var mainCharacter: CharacterBody2D = get_tree().get_first_node_in_group("MainCharacter")
 
 func _physics_process(delta):
-	checkWolfVisibility()
+	check_wolf_visibility()
+	if isFreezed:
+		return
+	check_and_apply_bush_collision()
+	return
 	
+	
+	
+func check_and_apply_bush_collision():
 	for body in get_colliding_bodies():
 		var groups = body.get_groups()
 		if body.is_in_group("Bush"):
 			apply_impulse(-linear_velocity.normalized() * bushPunchingForce) #not cool. but static area can't detect collisions with rigidbody properly
-	pass
-	
-	
-func checkWolfVisibility():
+
+		
+func check_wolf_visibility():
 	var space_state = get_world_2d().direct_space_state	
 	var query = PhysicsRayQueryParameters2D.create(position, mainCharacter.position)
 	query.exclude = [self]
@@ -45,6 +55,15 @@ func _integrate_forces(state):
 		set_linear_velocity(Vector2(0, 0))
 		return
 		
+	if finalSlot != null: #when finished
+		var distance = position.distance_to(finalSlot.position)
+		if distance < 10.0:
+			isFreezed = true
+		if not isFreezed:
+			set_linear_velocity(position.direction_to(finalSlot.global_position) * 50)
+			# works but why?
+		return
+		
 	var mcCurrentState = mainCharacter.get_current_state()
 	var velocity = 0.0
 	var distanceToMC = position.distance_to(mainCharacter.position)
@@ -60,3 +79,20 @@ func _integrate_forces(state):
 func _process(delta):
 	pass
 	
+
+func freeze_sheep():
+	isFreezed = true
+	return
+	
+func unfreeze_sheep():
+	isFreezed = false
+	pass
+	
+func reverse_freeze_status():
+	isFreezed = !isFreezed
+	pass
+	
+func set_final_position(slot):
+	get_node("CollisionShape2D").set_deferred("disabled", true)
+	finalSlot = slot
+

@@ -6,7 +6,6 @@ signal transition_finished
 @onready var animation_player = $AnimationPlayer
 
 
-
 func close_screen():
 	animation_player.play("close_screen")
 

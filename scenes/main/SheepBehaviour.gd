@@ -4,6 +4,8 @@ enum State {WOLFSKIN, SHEEPSKIN}
 
 const SPEED = 100.0
 
+@export
+var bushPunchingForce = 1000; #heuristic 
 
 @export
 var stopDistance = 150;
@@ -16,9 +18,12 @@ var canSeeWolf = true
 var mainCharacter: CharacterBody2D = get_tree().get_first_node_in_group("MainCharacter")
 
 func _physics_process(delta):
-	#body.getStat
-	#move_and_slide()
 	checkWolfVisibility()
+	
+	for body in get_colliding_bodies():
+		var groups = body.get_groups()
+		if body.is_in_group("Bush"):
+			apply_impulse(-linear_velocity.normalized() * bushPunchingForce) #not cool. but static area can't detect collisions with rigidbody properly
 	pass
 	
 	

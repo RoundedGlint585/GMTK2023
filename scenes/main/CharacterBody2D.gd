@@ -74,11 +74,11 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_ENTER) and timerTeleport.time_left == 0.0:
 		timerTeleport.one_shot = true
 		timerTeleport.start(teleportCooldown)
-		position = getTeleportPosition()
+		position = get_teleport_position()
 		
 		
 		
-func getTeleportPosition():
+func get_teleport_position():
 	for teleport in teleportsNode.get_children():
 		if teleport.getDistanceToMC() > teleportEffectiveDistance:
 			continue

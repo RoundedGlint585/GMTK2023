@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhx4x2sder7nq"]
+
+[ext_resource type="Script" path="res://scenes/main/Teleport.gd" id="1_ihafg"]
+[ext_resource type="Shader" path="res://scenes/main/EdgeOutline.gdshader" id="2_w3hy1"]
+[ext_resource type="Texture2D" uid="uid://bg16n8tym78ud" path="res://sprites/Black.png" id="3_xpdnl"]
+[ext_resource type="Script" path="res://scenes/main/TeleportSpriteBehaviour.gd" id="4_fcwuk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huqxc"]
+shader = ExtResource("2_w3hy1")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 3.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/strength = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5tkt"]
+shader = ExtResource("2_w3hy1")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 3.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/strength = 0.268
+
+[node name="Teleport" type="Node"]
+script = ExtResource("1_ihafg")
+
+[node name="PointA" type="Node2D" parent="."]
+position = Vector2(306, 221)
+
+[node name="TeleportSprite" type="Sprite2D" parent="PointA"]
+material = SubResource("ShaderMaterial_huqxc")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_xpdnl")
+script = ExtResource("4_fcwuk")
+
+[node name="PointB" type="Node2D" parent="."]
+position = Vector2(635, 506)
+
+[node name="TeleportSprite" type="Sprite2D" parent="PointB"]
+material = SubResource("ShaderMaterial_k5tkt")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_xpdnl")
+script = ExtResource("4_fcwuk")

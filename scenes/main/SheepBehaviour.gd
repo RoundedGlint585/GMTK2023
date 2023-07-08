@@ -13,7 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var canSeeWolf = true
 
 @onready 
-var mainCharacter: CharacterBody2D = $"../MainCharacter"
+var mainCharacter: CharacterBody2D = get_tree().get_first_node_in_group("MainCharacter")
 
 func _physics_process(delta):
 	#body.getStat

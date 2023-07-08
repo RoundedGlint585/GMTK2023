@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl7kmv1cyrida"]
+[gd_scene load_steps=13 format=3 uid="uid://bl7kmv1cyrida"]
 
 [ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="1_pe6fa"]
 [ext_resource type="Script" path="res://scenes/main/CharacterBody2D.gd" id="1_u1k67"]
 [ext_resource type="Script" path="res://scenes/main/MCSkinBehaviour.gd" id="3_3pabp"]
 [ext_resource type="Script" path="res://scenes/main/SheepBehaviour.gd" id="4_g3a3p"]
+[ext_resource type="Script" path="res://scenes/main/Teleport.gd" id="6_t5t1s"]
+[ext_resource type="Shader" path="res://scenes/main/EdgeOutline.gdshader" id="6_tn5k4"]
+[ext_resource type="Texture2D" uid="uid://bg16n8tym78ud" path="res://sprites/Black.png" id="7_egch2"]
+[ext_resource type="Script" path="res://scenes/main/TeleportSpriteBehaviour.gd" id="9_1yo6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68uj1"]
 size = Vector2(146, 132)
@@ -11,10 +15,29 @@ size = Vector2(146, 132)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54alj"]
 size = Vector2(127, 126)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huqxc"]
+shader = ExtResource("6_tn5k4")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 3.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/strength = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5tkt"]
+shader = ExtResource("6_tn5k4")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 3.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/strength = 0.268
+
 [node name="Main" type="Node2D"]
 
-[node name="MainCharacter" type="CharacterBody2D" parent="."]
+[node name="MainCharacter" type="CharacterBody2D" parent="." groups=["MainCharacter"]]
 position = Vector2(557, 298)
+scale = Vector2(0.33, 0.33)
 disable_mode = 2
 collision_layer = 3
 collision_mask = 3
@@ -31,6 +54,7 @@ position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_68uj1")
 
 [node name="Sheep" type="RigidBody2D" parent="."]
+scale = Vector2(0.33, 0.33)
 mass = 0.96
 gravity_scale = 0.0
 max_contacts_reported = 3
@@ -49,6 +73,7 @@ shape = SubResource("RectangleShape2D_54alj")
 
 [node name="Sheep2" type="RigidBody2D" parent="."]
 position = Vector2(0, 500)
+scale = Vector2(0.33, 0.33)
 mass = 0.56
 gravity_scale = 0.0
 max_contacts_reported = 3
@@ -62,3 +87,28 @@ texture = ExtResource("1_pe6fa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sheep2"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_54alj")
+
+[node name="Teleports" type="Node2D" parent="." groups=["Teleports"]]
+position = Vector2(557, 298)
+scale = Vector2(0.33, 0.33)
+
+[node name="Teleport" type="Node" parent="Teleports"]
+script = ExtResource("6_t5t1s")
+
+[node name="PointA" type="Node2D" parent="Teleports/Teleport"]
+position = Vector2(306, 221)
+
+[node name="TeleportSprite" type="Sprite2D" parent="Teleports/Teleport/PointA"]
+material = SubResource("ShaderMaterial_huqxc")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_egch2")
+script = ExtResource("9_1yo6l")
+
+[node name="PointB" type="Node2D" parent="Teleports/Teleport"]
+position = Vector2(635, 506)
+
+[node name="TeleportSprite" type="Sprite2D" parent="Teleports/Teleport/PointB"]
+material = SubResource("ShaderMaterial_k5tkt")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_egch2")
+script = ExtResource("9_1yo6l")

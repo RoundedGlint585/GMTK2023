@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://d12g5oic6ggew"]
+
+[ext_resource type="Script" path="res://scenes/main/CharacterBody2D.gd" id="1_oas8h"]
+[ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="2_3nuu1"]
+[ext_resource type="Script" path="res://scenes/main/MCSkinBehaviour.gd" id="3_xxbcg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68uj1"]
+size = Vector2(146, 132)
+
+[node name="MainCharacter" type="CharacterBody2D" groups=["MainCharacter"]]
+position = Vector2(557, 298)
+scale = Vector2(0.33, 0.33)
+disable_mode = 2
+collision_layer = 3
+collision_mask = 3
+safe_margin = 1.0
+script = ExtResource("1_oas8h")
+force = 5000
+
+[node name="Skin" type="Sprite2D" parent="."]
+texture = ExtResource("2_3nuu1")
+script = ExtResource("3_xxbcg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_68uj1")

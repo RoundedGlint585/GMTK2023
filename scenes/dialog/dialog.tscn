@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpyi3n5nvxu1a"]
+
+[ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="1_4v45t"]
+[ext_resource type="Script" path="res://scenes/dialog/dialog.gd" id="1_dhrbv"]
+
+[sub_resource type="Animation" id="Animation_gipor"]
+resource_name = "float"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(649, 159), Vector2(649, 170), Vector2(649, 159)]
+}
+
+[sub_resource type="Animation" id="Animation_dua4w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(649, 159)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1rtdw"]
+_data = {
+"RESET": SubResource("Animation_dua4w"),
+"float": SubResource("Animation_gipor")
+}
+
+[node name="Dialog" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_dhrbv")
+dialog_path = "res://dialogs/test_dialog.json"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(400, 200)
+offset_left = 265.0
+offset_top = 397.0
+offset_right = 965.0
+offset_bottom = 597.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[node name="Name" type="RichTextLabel" parent="ColorRect"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "FOx"
+
+[node name="Text" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 49.0
+offset_right = 642.0
+offset_bottom = 169.0
+
+[node name="Portrait" type="Sprite2D" parent="ColorRect"]
+position = Vector2(25, -184)
+
+[node name="Info" type="Sprite2D" parent="ColorRect"]
+position = Vector2(410, -164)
+
+[node name="Timer" type="Timer" parent="ColorRect"]
+
+[node name="EndPhraseTimer" type="Timer" parent="ColorRect"]
+
+[node name="Indicator" type="Sprite2D" parent="ColorRect"]
+position = Vector2(649, 159)
+scale = Vector2(0.494087, 0.304755)
+texture = ExtResource("1_4v45t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/Indicator"]
+autoplay = "float"
+libraries = {
+"": SubResource("AnimationLibrary_1rtdw")
+}

@@ -1,9 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl7kmv1cyrida"]
+[gd_scene load_steps=7 format=3 uid="uid://bl7kmv1cyrida"]
 
 [ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="1_pe6fa"]
+[ext_resource type="Script" path="res://scenes/main/CharacterBody2D.gd" id="1_u1k67"]
+[ext_resource type="Script" path="res://scenes/main/MCSkinBehaviour.gd" id="3_3pabp"]
+[ext_resource type="Script" path="res://scenes/main/SheepBehaviour.gd" id="4_g3a3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68uj1"]
+size = Vector2(146, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54alj"]
+size = Vector2(127, 126)
 
 [node name="Main" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(270, 178)
+[node name="MainCharacter" type="CharacterBody2D" parent="."]
+position = Vector2(557, 298)
+disable_mode = 2
+collision_layer = 3
+collision_mask = 3
+safe_margin = 1.0
+script = ExtResource("1_u1k67")
+force = 5000
+
+[node name="Skin" type="Sprite2D" parent="MainCharacter"]
 texture = ExtResource("1_pe6fa")
+script = ExtResource("3_3pabp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCharacter"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_68uj1")
+
+[node name="Sheep" type="RigidBody2D" parent="."]
+mass = 0.96
+gravity_scale = 0.0
+max_contacts_reported = 3
+contact_monitor = true
+lock_rotation = true
+linear_damp_mode = 1
+linear_damp = 2.0
+script = ExtResource("4_g3a3p")
+
+[node name="Skin" type="Sprite2D" parent="Sheep"]
+texture = ExtResource("1_pe6fa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sheep"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_54alj")
+
+[node name="Sheep2" type="RigidBody2D" parent="."]
+position = Vector2(0, 500)
+mass = 0.56
+gravity_scale = 0.0
+max_contacts_reported = 3
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("4_g3a3p")
+
+[node name="Skin" type="Sprite2D" parent="Sheep2"]
+texture = ExtResource("1_pe6fa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sheep2"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_54alj")

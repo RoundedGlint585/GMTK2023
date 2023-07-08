@@ -29,10 +29,12 @@ var teleportEffectiveDistance = 80;
 
 @onready var teleportsNode =  get_tree().get_first_node_in_group("Teleports")
 
+@onready var skin = $Skin
+
 enum State {WOLFSKIN, SHEEPSKIN}
 
 @onready 
-var currentState = State.WOLFSKIN
+var currentState = State.SHEEPSKIN
 
 func _ready():
 	#skin changer timer
@@ -78,9 +80,16 @@ func _process(delta):
 		timerTeleport.one_shot = true
 		timerTeleport.start(teleportCooldown)
 		position = get_teleport_position()
+	
+	flip_sprite_with_direction()
 		
-		
-		
+
+func flip_sprite_with_direction():
+	if velocity.x > 0:  # sprite direction
+		skin.scale.x = -abs(skin.scale.x)
+	elif velocity.x < 0:
+		skin.scale.x = abs(skin.scale.x)
+
 func get_teleport_position():
 	for teleport in teleportsNode.get_children():
 		if teleport.get_distance_to_mc() > teleportEffectiveDistance:

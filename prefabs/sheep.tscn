@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://bf6cg5oa8enfd"]
 
 [ext_resource type="Script" path="res://scenes/main/SheepBehaviour.gd" id="1_43oyr"]
-[ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="2_wuox4"]
+[ext_resource type="Texture2D" uid="uid://daswwckcsg834" path="res://sprites/sheep_follow.png" id="2_6bc7a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_54alj"]
-size = Vector2(127, 126)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3is06"]
+radius = 69.697
+height = 193.939
 
 [node name="Sheep" type="RigidBody2D"]
-scale = Vector2(0.33, 0.33)
+collision_mask = 5
 mass = 0.96
 gravity_scale = 0.0
 max_contacts_reported = 3
@@ -18,8 +19,12 @@ linear_damp = 2.0
 script = ExtResource("1_43oyr")
 
 [node name="Skin" type="Sprite2D" parent="."]
-texture = ExtResource("2_wuox4")
+position = Vector2(0, 3.03027)
+scale = Vector2(0.160939, 0.160939)
+texture = ExtResource("2_6bc7a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_54alj")
+position = Vector2(4.76837e-07, 0)
+rotation = 1.5708
+scale = Vector2(0.33, 0.33)
+shape = SubResource("CapsuleShape2D_3is06")

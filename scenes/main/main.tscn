@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://coojr6raqj8cd" path="res://sprites/grass1.jpg" id="1_fmkf7"]
 [ext_resource type="PackedScene" uid="uid://c802u04nk487l" path="res://prefabs/wind_area.tscn" id="1_lb07o"]
 [ext_resource type="Script" path="res://scenes/main/level.gd" id="1_w6o0b"]
-[ext_resource type="PackedScene" uid="uid://bf6cg5oa8enfd" path="res://prefabs/sheep.tscn" id="2_gqhbr"]
+[ext_resource type="PackedScene" uid="uid://i7qstwr5ueq3" path="res://prefabs/sheep.tscn" id="2_gqhbr"]
 [ext_resource type="PackedScene" uid="uid://c8u0gc7srpoac" path="res://prefabs/passive_bush.tscn" id="2_l70qf"]
 [ext_resource type="PackedScene" uid="uid://bhx4x2sder7nq" path="res://prefabs/teleport.tscn" id="5_r5w3f"]
 [ext_resource type="PackedScene" uid="uid://dxkj7fin3n681" path="res://prefabs/agressive_bush.tscn" id="6_jbaeh"]
@@ -31,14 +31,7 @@ texture = ExtResource("1_fmkf7")
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_4bqfn")]
 scale = Vector2(0.562451, 0.562451)
-motion_mode = 1
-skinChangeCooldown = null
-allergyCooldown = null
 force = 1000
-teleportEffectiveDistance = null
-teleportEntryTime = null
-teleportExitTime = null
-teleportMovingTime = null
 
 [node name="Sheep3" parent="." instance=ExtResource("2_gqhbr")]
 position = Vector2(134, 219)

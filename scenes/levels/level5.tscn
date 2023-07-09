@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d12g5oic6ggew" path="res://prefabs/main_character.tscn" id="4_b2i78"]
 [ext_resource type="PackedScene" uid="uid://cshq7vxqct218" path="res://prefabs/level_finish.tscn" id="5_853u6"]
 [ext_resource type="PackedScene" uid="uid://c8u0gc7srpoac" path="res://prefabs/passive_bush.tscn" id="6_m1vq4"]
-[ext_resource type="PackedScene" uid="uid://bf6cg5oa8enfd" path="res://prefabs/sheep.tscn" id="7_11fsy"]
+[ext_resource type="PackedScene" uid="uid://i7qstwr5ueq3" path="res://prefabs/sheep.tscn" id="7_11fsy"]
 [ext_resource type="PackedScene" uid="uid://dxkj7fin3n681" path="res://prefabs/agressive_bush.tscn" id="8_u8rlt"]
 [ext_resource type="PackedScene" uid="uid://c802u04nk487l" path="res://prefabs/wind_area.tscn" id="9_viyro"]
 
@@ -43,7 +43,6 @@ metadata/_edit_lock_ = true
 [node name="MainCharacter" parent="." instance=ExtResource("4_b2i78")]
 position = Vector2(713, 1835)
 scale = Vector2(0.562451, 0.562451)
-motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
 limit_left = 0

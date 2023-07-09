@@ -22,10 +22,10 @@ var force = 100
 var teleportEffectiveDistance = 80;
 
 @export
-var teleportEntryTime = 1.0
+var teleportEntryTime = 0.7
 
 @export
-var teleportExitTime = 1.0
+var teleportExitTime = 0.6
 
 @export
 var teleportMovingTime = 1.0
@@ -40,6 +40,8 @@ var particles:CPUParticles2D = $CPUParticles2D
 @onready var timerAllergy = Timer.new()
 
 var isAllergyFreezed = false
+
+var isJumpFreezed = false
 
 @onready var teleportsNode =  get_tree().get_first_node_in_group("Teleports")
 
@@ -84,7 +86,7 @@ func get_input(delta):
 	velocity = direction * SPEED;
 
 func _physics_process(delta):
-	if isAllergyFreezed or timerSkinChange.time_left > 0:
+	if isAllergyFreezed or teleportStatus != TeleportState.NONACTIVE:
 		return
 		
 	get_input(delta)
@@ -122,8 +124,11 @@ func _process(delta):
 		isAllergyFreezed = false
 		return
 	
+	
+	update_animation()
+	
 	if isAllergyFreezed:
-		return
+		return	
 	
 	if Input.is_key_pressed(KEY_SPACE) and timerSkinChange.time_left == 0.0:
 		timerSkinChange.one_shot = true
@@ -133,7 +138,7 @@ func _process(delta):
 		
 	process_teleport(delta)
 
-	update_animation()
+
 	flip_sprite_with_direction()
 	
 	
@@ -149,6 +154,7 @@ func process_particles():
 			
 func process_teleport(_delta):
 	if Input.is_key_pressed(KEY_ENTER) and teleportStatus == TeleportState.NONACTIVE:
+		isJumpFreezed = true
 		var newPosition = get_teleport_position()
 		if newPosition == Vector2(-1, -1):
 			return
@@ -164,9 +170,11 @@ func process_teleport(_delta):
 	if teleportStatus == TeleportState.MOVING and timerTeleport.time_left == 0.0:
 		teleportStatus = TeleportState.EXIT
 		var newPosition = get_teleport_position()
+		timerTeleport.start(teleportExitTime)
 		position = newPosition
 		visible = true
 	if teleportStatus == TeleportState.EXIT and timerTeleport.time_left == 0.0:
+		isJumpFreezed = false
 		get_node("CollisionShape2D").set_deferred("disabled", false)
 		teleportStatus = TeleportState.NONACTIVE
 
@@ -224,3 +232,17 @@ func update_animation():
 				animation_player.play("idle_sheep")
 			elif teleportStatus == TeleportState.NONACTIVE && velocity != Vector2.ZERO:
 				animation_player.play("walk_sheep")
+			
+	if teleportStatus == TeleportState.ENTRY:
+		if timerSkinChange.time_left > 0.0 and animation_player.current_animation == "jump_in":
+			return
+		animation_player.play("jump_in")
+	elif teleportStatus == TeleportState.EXIT:
+		if timerSkinChange.time_left > 0.0 and animation_player.current_animation == "jump_out":
+			return
+		animation_player.play("jump_out")
+		
+	if isAllergyFreezed:
+		if timerAllergy.time_left > 0.0 and animation_player.current_animation == "chich":
+			return
+		animation_player.play("chich")

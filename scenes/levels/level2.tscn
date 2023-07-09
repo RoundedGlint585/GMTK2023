@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://lyieyxw1bvhg"]
+[gd_scene load_steps=10 format=3 uid="uid://coy5ki6sant2j"]
 
 [ext_resource type="Script" path="res://scenes/main/level.gd" id="1_31edl"]
 [ext_resource type="Texture2D" uid="uid://coojr6raqj8cd" path="res://sprites/grass1.jpg" id="2_ai4hv"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d12g5oic6ggew" path="res://prefabs/main_character.tscn" id="4_1i4qy"]
 [ext_resource type="PackedScene" uid="uid://cshq7vxqct218" path="res://prefabs/level_finish.tscn" id="5_o1bbd"]
 [ext_resource type="PackedScene" uid="uid://c8u0gc7srpoac" path="res://prefabs/passive_bush.tscn" id="6_af71d"]
-[ext_resource type="PackedScene" uid="uid://bf6cg5oa8enfd" path="res://prefabs/sheep.tscn" id="7_1mlcp"]
+[ext_resource type="PackedScene" uid="uid://i7qstwr5ueq3" path="res://prefabs/sheep.tscn" id="7_1mlcp"]
 [ext_resource type="PackedScene" uid="uid://dsi30o2ub14hu" path="res://prefabs/flowers.tscn" id="8_0mq4u"]
 [ext_resource type="PackedScene" uid="uid://bhx4x2sder7nq" path="res://prefabs/teleport.tscn" id="9_4ctxk"]
 
@@ -43,7 +43,6 @@ metadata/_edit_lock_ = true
 [node name="MainCharacter" parent="." instance=ExtResource("4_1i4qy")]
 position = Vector2(590, 1887)
 scale = Vector2(0.562451, 0.562451)
-motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
 limit_left = 0

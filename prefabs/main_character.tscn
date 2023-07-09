@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d12g5oic6ggew"]
+[gd_scene load_steps=28 format=3 uid="uid://d12g5oic6ggew"]
 
 [ext_resource type="Script" path="res://scenes/main/CharacterBody2D.gd" id="1_oas8h"]
 [ext_resource type="Texture2D" uid="uid://cco60jgfujgpn" path="res://sprites/Wolf_idle.png" id="2_kdbrb"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bwbqcbmykuftl" path="res://sprites/wolf_walks.png" id="5_calyn"]
 [ext_resource type="Texture2D" uid="uid://dogx1beq0bm44" path="res://sprites/wolf_to_sheep.png" id="6_dv42v"]
 [ext_resource type="Texture2D" uid="uid://to0ncjinn2o6" path="res://sprites/Cloud.png" id="7_2a4px"]
+[ext_resource type="Texture2D" uid="uid://dfijp040c7e28" path="res://sprites/jump_in.png" id="7_g2yf6"]
+[ext_resource type="Texture2D" uid="uid://0ixwq61eq5md" path="res://sprites/Jump_out.png" id="8_70kdm"]
 [ext_resource type="AudioStream" uid="uid://cq7adbnoogjax" path="res://Music/first.mp3" id="8_cwaqv"]
+[ext_resource type="Texture2D" uid="uid://c5dq44ro5j7f0" path="res://sprites/wolf_achoo.png" id="9_dwea6"]
 [ext_resource type="AudioStream" uid="uid://cquo47c1ek6kn" path="res://Music/second.mp3" id="9_qal7y"]
 [ext_resource type="AudioStream" uid="uid://c2kfy635e7prr" path="res://Music/chich.mp3" id="10_0sp8e"]
 [ext_resource type="AudioStream" uid="uid://cu08xkd5i1lgs" path="res://Music/change.mp3" id="11_6g6uc"]
@@ -131,6 +134,46 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 4, 6, 7, 6, 5, 2]
+}
+
+[sub_resource type="Animation" id="Animation_15wou"]
+resource_name = "jump_in"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skin:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_g2yf6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skin:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="Animation" id="Animation_rfy8g"]
@@ -295,11 +338,94 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_mgcpc"]
+resource_name = "jump_out"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skin:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_70kdm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skin:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_isjq8"]
+resource_name = "chich"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skin:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_dwea6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skin:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c1vtq"]
 _data = {
 "RESET": SubResource("Animation_gmpd8"),
+"chich": SubResource("Animation_isjq8"),
 "idle_sheep": SubResource("Animation_4cofv"),
 "idle_wolf": SubResource("Animation_pkbq3"),
+"jump_in": SubResource("Animation_15wou"),
+"jump_out": SubResource("Animation_mgcpc"),
 "sheep_to_wolf": SubResource("Animation_rfy8g"),
 "walk_sheep": SubResource("Animation_7fmwk"),
 "walk_wolf": SubResource("Animation_v28wr"),
@@ -320,6 +446,7 @@ scale = Vector2(0.33, 0.33)
 disable_mode = 2
 collision_layer = 11
 collision_mask = 11
+motion_mode = 1
 safe_margin = 1.0
 script = ExtResource("1_oas8h")
 force = 5000

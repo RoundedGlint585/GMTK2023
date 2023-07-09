@@ -190,7 +190,7 @@ func inverse_current_state():
 		currentState = State.SHEEPSKIN
 	else:
 		firstPlayer.volume_db = volumeValue
-		secondPlayer.volume_db = linear_to_db(0)
+		secondPlayer.volume_db = gilinear_to_db(0)
 		currentState = State.WOLFSKIN
 		
 func get_current_state():

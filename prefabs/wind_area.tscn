@@ -100,6 +100,7 @@ _data = {
 position = Vector2(287, 286)
 script = ExtResource("1_8fkpv")
 cooldown = 3.0
+windForce = -100000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kkyw8")

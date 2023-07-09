@@ -1,17 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dabt2pphe3m0b"]
+[gd_scene load_steps=3 format=3 uid="uid://dabt2pphe3m0b"]
 
 [ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_rq7tt"]
+[ext_resource type="Texture2D" uid="uid://ddugwf54rdgdq" path="res://sprites/grass2.jpg" id="2_vrgds"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_rq7tt")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.67451, 0.67451, 0.67451, 1)
+texture = ExtResource("2_vrgds")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -40,7 +41,7 @@ layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
-text = "Unnamed Game"
+text = "Sly Allergic Wolf"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MenuBox/MarginContainer/VBoxContainer"]
 layout_mode = 2

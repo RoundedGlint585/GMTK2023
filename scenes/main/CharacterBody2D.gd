@@ -121,6 +121,9 @@ func _process(delta):
 		
 func process_teleport(_delta):
 	if Input.is_key_pressed(KEY_ENTER) and teleportStatus == TeleportState.NONACTIVE:
+		var newPosition = get_teleport_position()
+		if newPosition == Vector2(-1, -1):
+			return
 		teleportStatus = TeleportState.ENTRY
 		timerTeleport.start(teleportEntryTime)
 		
@@ -133,8 +136,6 @@ func process_teleport(_delta):
 	if teleportStatus == TeleportState.MOVING and timerTeleport.time_left == 0.0:
 		teleportStatus = TeleportState.EXIT
 		var newPosition = get_teleport_position()
-		if newPosition == Vector2(-1, -1):
-			return
 		position = newPosition
 		visible = true
 	if teleportStatus == TeleportState.EXIT and timerTeleport.time_left == 0.0:

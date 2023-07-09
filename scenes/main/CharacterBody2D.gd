@@ -52,7 +52,9 @@ var isAllergyFreezed = false
 
 @onready var secondPlayer: AudioStreamPlayer = $SecondPlayer
 
-@onready var thirdPlayer: AudioStreamPlayer = $ThirdPlayer
+@onready var chichPlayer: AudioStreamPlayer = $ChichPlayer
+
+@onready var skinChangePlayer: AudioStreamPlayer = $SkinChangeSound
 
 @onready 
 var currentState = State.SHEEPSKIN
@@ -105,6 +107,7 @@ func resolve_collisions():
 		
 		if col.get_collider().is_in_group("Flowers") and not isAllergyFreezed:
 			isAllergyFreezed = true
+			chichPlayer.play()
 			velocity = -velocity.normalized() * 100 #small hack to avoid eternal collision
 			timerAllergy.start(allergyCooldown)
 		
@@ -186,6 +189,7 @@ func get_teleport_position():
 	return Vector2(-1, -1)
 		
 func inverse_current_state():
+	skinChangePlayer.play()
 	if currentState == State.WOLFSKIN:
 		firstPlayer.volume_db = linear_to_db(0)
 		secondPlayer.volume_db = volumeValue

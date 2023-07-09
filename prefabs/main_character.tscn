@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d12g5oic6ggew"]
+[gd_scene load_steps=22 format=3 uid="uid://d12g5oic6ggew"]
 
 [ext_resource type="Script" path="res://scenes/main/CharacterBody2D.gd" id="1_oas8h"]
 [ext_resource type="Texture2D" uid="uid://cco60jgfujgpn" path="res://sprites/Wolf_idle.png" id="2_kdbrb"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dogx1beq0bm44" path="res://sprites/wolf_to_sheep.png" id="6_dv42v"]
 [ext_resource type="AudioStream" uid="uid://cq7adbnoogjax" path="res://Music/first.mp3" id="8_cwaqv"]
 [ext_resource type="AudioStream" uid="uid://cquo47c1ek6kn" path="res://Music/second.mp3" id="9_qal7y"]
+[ext_resource type="AudioStream" uid="uid://c2kfy635e7prr" path="res://Music/chich.mp3" id="10_0sp8e"]
+[ext_resource type="AudioStream" uid="uid://cu08xkd5i1lgs" path="res://Music/change.mp3" id="11_6g6uc"]
 
 [sub_resource type="Animation" id="Animation_gmpd8"]
 length = 0.001
@@ -356,3 +358,9 @@ stream = ExtResource("9_qal7y")
 
 [node name="SecondPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_cwaqv")
+
+[node name="ChichPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_0sp8e")
+
+[node name="SkinChangeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_6g6uc")

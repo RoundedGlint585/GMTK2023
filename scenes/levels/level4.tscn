@@ -356,7 +356,8 @@ position = Vector2(786, 1876)
 [node name="Flowers" type="Node2D" parent="."]
 
 [node name="Flowers2" parent="Flowers" instance=ExtResource("8_3phdr")]
-position = Vector2(828, 1285)
+position = Vector2(836, 1268)
+rotation = -0.30728
 
 [node name="Flowers3" parent="Flowers" instance=ExtResource("8_3phdr")]
 position = Vector2(371, 1035)

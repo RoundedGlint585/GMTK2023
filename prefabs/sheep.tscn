@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/main/SheepBehaviour.gd" id="1_43oyr"]
 [ext_resource type="Texture2D" uid="uid://dj3qr0g7e5sa4" path="res://sprites/sheep_scared.png" id="2_2tbce"]
 [ext_resource type="Texture2D" uid="uid://daswwckcsg834" path="res://sprites/sheep_follow.png" id="2_6bc7a"]
-[ext_resource type="Texture2D" uid="uid://c3o6ni13ep6s3" path="res://sprites/sheep.png" id="4_2ogj6"]
+[ext_resource type="Texture2D" uid="uid://dm5mwrn66knxp" path="res://sprites/sheep_idle.png" id="4_bj571"]
 
 [sub_resource type="Animation" id="Animation_3ck4l"]
 length = 0.001
@@ -128,7 +128,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ueigf"]
 resource_name = "stay"
-length = 0.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -140,7 +140,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_2ogj6")]
+"values": [ExtResource("4_bj571")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -152,7 +152,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -161,10 +161,10 @@ tracks/2/path = NodePath("Skin:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g7kmy"]

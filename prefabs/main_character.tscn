@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d12g5oic6ggew"]
+[gd_scene load_steps=12 format=3 uid="uid://d12g5oic6ggew"]
 
 [ext_resource type="Script" path="res://scenes/main/CharacterBody2D.gd" id="1_oas8h"]
 [ext_resource type="Texture2D" uid="uid://cco60jgfujgpn" path="res://sprites/Wolf_idle.png" id="2_kdbrb"]
+[ext_resource type="Texture2D" uid="uid://b8j0pjhs7it2q" path="res://sprites/wolf_sheep_idle.png" id="3_ayyvc"]
 [ext_resource type="Texture2D" uid="uid://cbt0i8gesy3xs" path="res://sprites/wolf_sheep.png" id="5_3m386"]
 
 [sub_resource type="Animation" id="Animation_gmpd8"]
@@ -45,7 +46,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_4cofv"]
 resource_name = "idle_sheep"
-length = 0.7
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -57,7 +58,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_3m386")]
+"values": [ExtResource("3_ayyvc")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -69,7 +70,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -78,10 +79,10 @@ tracks/2/path = NodePath("Skin:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [1, 2, 0, 2]
 }
 
 [sub_resource type="Animation" id="Animation_pkbq3"]

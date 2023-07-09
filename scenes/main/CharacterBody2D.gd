@@ -52,6 +52,8 @@ var isAllergyFreezed = false
 
 @onready var secondPlayer: AudioStreamPlayer = $SecondPlayer
 
+@onready var thirdPlayer: AudioStreamPlayer = $ThirdPlayer
+
 @onready 
 var currentState = State.SHEEPSKIN
 
@@ -190,7 +192,7 @@ func inverse_current_state():
 		currentState = State.SHEEPSKIN
 	else:
 		firstPlayer.volume_db = volumeValue
-		secondPlayer.volume_db = gilinear_to_db(0)
+		secondPlayer.volume_db = linear_to_db(0)
 		currentState = State.WOLFSKIN
 		
 func get_current_state():

@@ -21,7 +21,7 @@ var cooldown = 5.0
 var direction = Vector2(-1.0, 0.0)
 
 @export
-var windForce = 50.0
+var windForce = 5000.0
 
 var sheeps = []
 # Called when the node enters the scene tree for the first time.

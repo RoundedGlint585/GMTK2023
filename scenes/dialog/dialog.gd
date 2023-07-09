@@ -58,7 +58,7 @@ func next_phrase():
 		return
 	finished = false
 	
-	update_portrait()
+	#update_portrait()
 	name_label.text = dialog[phrase_num]["name"]
 	text_label.text = dialog[phrase_num]["text"]
 	

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsi30o2ub14hu"]
+
+[ext_resource type="Script" path="res://scenes/main/Flowers.gd" id="1_2541a"]
+[ext_resource type="Texture2D" uid="uid://bg16n8tym78ud" path="res://sprites/Black.png" id="2_i0gwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpsi0"]
+size = Vector2(132, 127)
+
+[node name="Flowers" type="StaticBody2D" groups=["Flowers"]]
+position = Vector2(862, 412)
+collision_layer = 8
+collision_mask = 10
+script = ExtResource("1_2541a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i0gwe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -0.5)
+shape = SubResource("RectangleShape2D_xpsi0")

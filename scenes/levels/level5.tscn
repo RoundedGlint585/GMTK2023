@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://11hnk2q6kul7"]
+[gd_scene load_steps=10 format=3 uid="uid://11hnk2q6kul7"]
 
 [ext_resource type="Script" path="res://scenes/main/level.gd" id="1_yv0sa"]
 [ext_resource type="Texture2D" uid="uid://coojr6raqj8cd" path="res://sprites/grass1.jpg" id="2_ohhbc"]
@@ -7,54 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cshq7vxqct218" path="res://prefabs/level_finish.tscn" id="5_853u6"]
 [ext_resource type="PackedScene" uid="uid://c8u0gc7srpoac" path="res://prefabs/passive_bush.tscn" id="6_m1vq4"]
 [ext_resource type="PackedScene" uid="uid://bf6cg5oa8enfd" path="res://prefabs/sheep.tscn" id="7_11fsy"]
-[ext_resource type="PackedScene" uid="uid://dsi30o2ub14hu" path="res://prefabs/flowers.tscn" id="8_vjbve"]
-[ext_resource type="PackedScene" uid="uid://bhx4x2sder7nq" path="res://prefabs/teleport.tscn" id="9_wb4p8"]
-[ext_resource type="Shader" path="res://scenes/main/EdgeOutline.gdshader" id="10_wdcom"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_86u0x"]
-resource_local_to_scene = true
-shader = ExtResource("10_wdcom")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 20.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-shader_parameter/strength = null
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_py4dy"]
-resource_local_to_scene = true
-shader = ExtResource("10_wdcom")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 20.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-shader_parameter/strength = 0.268
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u11wj"]
-resource_local_to_scene = true
-shader = ExtResource("10_wdcom")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 20.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-shader_parameter/strength = null
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kih7c"]
-resource_local_to_scene = true
-shader = ExtResource("10_wdcom")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 20.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-shader_parameter/strength = 0.268
+[ext_resource type="PackedScene" uid="uid://dxkj7fin3n681" path="res://prefabs/agressive_bush.tscn" id="8_u8rlt"]
+[ext_resource type="PackedScene" uid="uid://c802u04nk487l" path="res://prefabs/wind_area.tscn" id="9_viyro"]
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_yv0sa")
-scenePath = "res://scenes/menu/main_menu.tscn"
+scenePath = "res://scenes/dialog/dialog_scene_end.tscn"
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Node2D" parent="."]
@@ -82,7 +41,7 @@ texture = ExtResource("2_ohhbc")
 metadata/_edit_lock_ = true
 
 [node name="MainCharacter" parent="." instance=ExtResource("4_b2i78")]
-position = Vector2(590, 1887)
+position = Vector2(713, 1835)
 scale = Vector2(0.562451, 0.562451)
 motion_mode = 1
 skinChangeCooldown = null
@@ -101,7 +60,7 @@ limit_bottom = 2025
 
 [node name="LevelFinish" parent="." instance=ExtResource("5_853u6")]
 y_sort_enabled = true
-position = Vector2(989, 1130)
+position = Vector2(924, 483)
 
 [node name="PassiveBushes" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -201,22 +160,22 @@ position = Vector2(1209, 1382)
 position = Vector2(1222, 421)
 
 [node name="PassiveBush27" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(402, 1357)
+position = Vector2(554, 1270)
 
 [node name="PassiveBush28" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(64, 413)
 
 [node name="PassiveBush29" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(419, 1445)
+position = Vector2(548, 1650)
 
 [node name="PassiveBush75" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(399, 1537)
+position = Vector2(547, 1532)
 
 [node name="PassiveBush76" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(407, 1626)
+position = Vector2(-373, 1246)
 
 [node name="PassiveBush83" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(483, 1694)
+position = Vector2(-117, 1634)
 
 [node name="PassiveBush77" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(-8, 570)
@@ -225,31 +184,31 @@ position = Vector2(-8, 570)
 position = Vector2(37, 300)
 
 [node name="PassiveBush79" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(357, 1701)
+position = Vector2(-313, 1405)
 
 [node name="PassiveBush80" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(-781, 1349)
 
 [node name="PassiveBush81" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(403, 1268)
+position = Vector2(541, 1163)
 
 [node name="PassiveBush82" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(171, 282)
 
 [node name="PassiveBush30" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(812, 1432)
+position = Vector2(1508, 1220)
 
 [node name="PassiveBush31" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(1215, 600)
 
 [node name="PassiveBush32" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(765, 1330)
+position = Vector2(1181, 830)
 
 [node name="PassiveBush60" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(1055, 1451)
+position = Vector2(1491, 1405)
 
 [node name="PassiveBush61" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(933, 1453)
+position = Vector2(1755, 607)
 
 [node name="PassiveBush62" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(189, 346)
@@ -261,31 +220,31 @@ position = Vector2(1212, 549)
 position = Vector2(1205, 326)
 
 [node name="PassiveBush65" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(388, 1039)
+position = Vector2(1510, 1018)
 
 [node name="PassiveBush66" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(1068, 743)
+position = Vector2(1598, 509)
 
 [node name="PassiveBush68" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(917, 740)
+position = Vector2(1671, 886)
 
 [node name="PassiveBush69" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(781, 743)
+position = Vector2(1539, 665)
 
 [node name="PassiveBush70" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(773, 850)
+position = Vector2(1439, 748)
 
 [node name="PassiveBush71" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(419, 754)
+position = Vector2(539, 690)
 
 [node name="PassiveBush72" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(411, 853)
+position = Vector2(1489, 317)
 
 [node name="PassiveBush73" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(765, 932)
+position = Vector2(539, 826)
 
 [node name="PassiveBush74" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(423, 962)
+position = Vector2(540, 944)
 
 [node name="PassiveBush67" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(882, 270)
@@ -340,87 +299,53 @@ y_sort_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="Sheep" parent="Sheeps" instance=ExtResource("7_11fsy")]
-position = Vector2(449, 1925)
+position = Vector2(614, 1931)
 
 [node name="Sheep2" parent="Sheeps" instance=ExtResource("7_11fsy")]
-position = Vector2(371, 1865)
+position = Vector2(518, 1890)
 
 [node name="Sheep3" parent="Sheeps" instance=ExtResource("7_11fsy")]
-position = Vector2(439, 1824)
+position = Vector2(768, 1688)
 
 [node name="Sheep4" parent="Sheeps" instance=ExtResource("7_11fsy")]
-position = Vector2(883, 1796)
+position = Vector2(954, 1738)
 
 [node name="Sheep5" parent="Sheeps" instance=ExtResource("7_11fsy")]
-position = Vector2(915, 1860)
+position = Vector2(1017, 1826)
 
 [node name="Sheep6" parent="Sheeps" instance=ExtResource("7_11fsy")]
-position = Vector2(786, 1876)
+position = Vector2(872, 1745)
 
 [node name="Flowers" type="Node2D" parent="."]
-
-[node name="Flowers" parent="Flowers" instance=ExtResource("8_vjbve")]
-position = Vector2(529, 1432)
-
-[node name="Flowers2" parent="Flowers" instance=ExtResource("8_vjbve")]
-position = Vector2(657, 1431)
-
-[node name="Flowers3" parent="Flowers" instance=ExtResource("8_vjbve")]
-position = Vector2(555, 957)
-
-[node name="Flowers4" parent="Flowers" instance=ExtResource("8_vjbve")]
-position = Vector2(543, 803)
-
-[node name="Flowers5" parent="Flowers" instance=ExtResource("8_vjbve")]
-position = Vector2(622, 833)
-
-[node name="Flowers6" parent="Flowers" instance=ExtResource("8_vjbve")]
-position = Vector2(642, 1029)
-
-[node name="Flowers7" parent="Flowers" instance=ExtResource("8_vjbve")]
-position = Vector2(691, 1118)
-
-[node name="Flowers8" parent="Flowers" instance=ExtResource("8_vjbve")]
-position = Vector2(715, 1242)
-
-[node name="Flowers9" parent="Flowers" instance=ExtResource("8_vjbve")]
-position = Vector2(553, 1164)
-
-[node name="Flowers10" parent="Flowers" instance=ExtResource("8_vjbve")]
-position = Vector2(575, 1291)
 
 [node name="Teleports" type="Node2D" parent="." groups=["Teleports"]]
 metadata/_edit_lock_ = true
 
-[node name="Teleport" parent="Teleports" instance=ExtResource("9_wb4p8")]
+[node name="AggressiveBushes" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="PointA" parent="Teleports/Teleport" index="0"]
-position = Vector2(996, 1311)
+[node name="Bush" parent="AggressiveBushes" instance=ExtResource("8_u8rlt")]
+position = Vector2(670, 1322)
 
-[node name="TeleportSprite" parent="Teleports/Teleport/PointA" index="0"]
-material = SubResource("ShaderMaterial_86u0x")
+[node name="Bush2" parent="AggressiveBushes" instance=ExtResource("8_u8rlt")]
+position = Vector2(662, 968)
 
-[node name="PointB" parent="Teleports/Teleport" index="1"]
-position = Vector2(1004, 1574)
+[node name="Bush3" parent="AggressiveBushes" instance=ExtResource("8_u8rlt")]
+position = Vector2(861, 817)
 
-[node name="TeleportSprite" parent="Teleports/Teleport/PointB" index="0"]
-material = SubResource("ShaderMaterial_py4dy")
-position = Vector2(-30, 0)
+[node name="Bush4" parent="AggressiveBushes" instance=ExtResource("8_u8rlt")]
+position = Vector2(956, 1079)
 
-[node name="Teleport2" parent="Teleports" instance=ExtResource("9_wb4p8")]
+[node name="Bush5" parent="AggressiveBushes" instance=ExtResource("8_u8rlt")]
+position = Vector2(1082, 1351)
 
-[node name="PointA" parent="Teleports/Teleport2" index="0"]
-position = Vector2(992, 875)
+[node name="Bush6" parent="AggressiveBushes" instance=ExtResource("8_u8rlt")]
+position = Vector2(888, 1572)
 
-[node name="TeleportSprite" parent="Teleports/Teleport2/PointA" index="0"]
-material = SubResource("ShaderMaterial_u11wj")
+[node name="WindArea" parent="." instance=ExtResource("9_viyro")]
+position = Vector2(329, 1416)
+scale = Vector2(0.8, 0.480005)
 
-[node name="PointB" parent="Teleports/Teleport2" index="1"]
-position = Vector2(1019, 629)
-
-[node name="TeleportSprite" parent="Teleports/Teleport2/PointB" index="0"]
-material = SubResource("ShaderMaterial_kih7c")
-position = Vector2(-30, 0)
-
-[editable path="Teleports/Teleport"]
-[editable path="Teleports/Teleport2"]
+[node name="WindArea2" parent="." instance=ExtResource("9_viyro")]
+position = Vector2(310, 1058)
+scale = Vector2(0.8, 0.480005)

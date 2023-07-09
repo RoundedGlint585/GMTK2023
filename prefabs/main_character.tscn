@@ -352,7 +352,7 @@ scale_amount_max = 0.1
 color_ramp = SubResource("Gradient_olt6x")
 
 [node name="FirstPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_cwaqv")
+stream = ExtResource("9_qal7y")
 
 [node name="SecondPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_qal7y")
+stream = ExtResource("8_cwaqv")

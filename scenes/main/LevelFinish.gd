@@ -12,7 +12,7 @@ func on_enter(body:Node2D):
 	if not body.is_in_group("Sheep"):
 		return
 	var slot = get_free_slot()
-	if slot == null:
+	if slot == slots[-1]:
 		emit_signal("level_end")
 	body.set_final_position(slot)
 	pass

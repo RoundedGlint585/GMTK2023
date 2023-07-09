@@ -152,7 +152,7 @@ position = Vector2(1209, 1382)
 position = Vector2(1222, 421)
 
 [node name="PassiveBush27" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(554, 1270)
+position = Vector2(543, 1246)
 
 [node name="PassiveBush28" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(64, 413)
@@ -161,7 +161,7 @@ position = Vector2(64, 413)
 position = Vector2(548, 1650)
 
 [node name="PassiveBush75" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(547, 1532)
+position = Vector2(552, 1561)
 
 [node name="PassiveBush76" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(-373, 1246)
@@ -182,7 +182,7 @@ position = Vector2(-313, 1405)
 position = Vector2(-781, 1349)
 
 [node name="PassiveBush81" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(541, 1163)
+position = Vector2(542, 1189)
 
 [node name="PassiveBush82" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(171, 282)
@@ -236,7 +236,7 @@ position = Vector2(1489, 317)
 position = Vector2(539, 826)
 
 [node name="PassiveBush74" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
-position = Vector2(540, 944)
+position = Vector2(539, 930)
 
 [node name="PassiveBush67" parent="PassiveBushes" instance=ExtResource("6_m1vq4")]
 position = Vector2(882, 270)
@@ -335,9 +335,9 @@ position = Vector2(1082, 1351)
 position = Vector2(888, 1572)
 
 [node name="WindArea" parent="." instance=ExtResource("9_viyro")]
-position = Vector2(329, 1416)
+position = Vector2(340, 1421)
 scale = Vector2(0.8, 0.480005)
 
 [node name="WindArea2" parent="." instance=ExtResource("9_viyro")]
-position = Vector2(310, 1058)
+position = Vector2(333, 1064)
 scale = Vector2(0.8, 0.480005)

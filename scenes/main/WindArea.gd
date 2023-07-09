@@ -4,6 +4,7 @@ var isActive = false
 
 var randomAccumulator = 0
 
+@onready var animation_player = $Sprite2D/AnimationPlayer
 
 @onready
 var windPlayer = $windPlayer
@@ -45,13 +46,15 @@ func _ready():
 func _process(delta):
 	if cooldownTimer.time_left == 0.0 and not isActive:
 		isActive = true
-		windPlayer.play()
+		#windPlayer.play()
+		animation_player.play("default")
 		workingTimer.start(workTime)
 		
 	if workingTimer.time_left == 0.0 and isActive:
 		isActive = false
 		cooldownTimer.start(cooldown)
-		windPlayer.stop()
+		#windPlayer.stop()
+		animation_player.play("no_wind")
 	
 	
 func on_enter(body:Node2D):

@@ -84,8 +84,6 @@ metadata/_edit_lock_ = true
 [node name="MainCharacter" parent="." instance=ExtResource("4_1yaka")]
 position = Vector2(590, 1887)
 scale = Vector2(0.562451, 0.562451)
-motion_mode = 1
-force = 1000
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
 limit_left = 0

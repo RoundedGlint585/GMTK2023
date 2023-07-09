@@ -7,4 +7,4 @@
 [node name="Dialog" parent="." instance=ExtResource("1_ecydx")]
 dialog_path = "res://dialogs/dialog_end.json"
 load_next_scene = true
-next_scene_path = "res://scenes/menu/main_menu.tscn"
+next_scene_path = "res://scenes/end/end.tscn"

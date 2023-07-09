@@ -1,0 +1,177 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckreg1xyefhqs"]
+
+[ext_resource type="Texture2D" uid="uid://dnpfxcpneyk2m" path="res://sprites/fox_cool.png" id="1_inukx"]
+[ext_resource type="Texture2D" uid="uid://bt67x84xxashp" path="res://sprites/wolf_cool.png" id="2_xlc3n"]
+[ext_resource type="Texture2D" uid="uid://cw7jy8xa7yiwc" path="res://sprites/wow_effect.png" id="3_ng88u"]
+[ext_resource type="PackedScene" uid="uid://ca06pq7ex2nf3" path="res://scenes/end/sprite_sheep_naked.tscn" id="4_2ob01"]
+[ext_resource type="Texture2D" uid="uid://c6x6qm37yfivf" path="res://scenes/end/final_bg.png" id="5_5h5y4"]
+
+[sub_resource type="Animation" id="Animation_6prx5"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D4:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_b7xuv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D4:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16vge"]
+_data = {
+"RESET": SubResource("Animation_b7xuv"),
+"default": SubResource("Animation_6prx5")
+}
+
+[node name="end" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(449, 170)
+scale = Vector2(0.655339, 0.655339)
+texture = ExtResource("1_inukx")
+hframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(650, 167)
+scale = Vector2(0.760001, 0.760001)
+texture = ExtResource("2_xlc3n")
+flip_h = true
+hframes = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1030, 427)
+texture = ExtResource("3_ng88u")
+flip_h = true
+hframes = 3
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(194, 440)
+texture = ExtResource("3_ng88u")
+hframes = 3
+
+[node name="Sprite2D5" parent="." instance=ExtResource("4_2ob01")]
+position = Vector2(875, 538)
+
+[node name="Sprite2D6" parent="." instance=ExtResource("4_2ob01")]
+position = Vector2(1064, 558)
+
+[node name="Sprite2D7" parent="." instance=ExtResource("4_2ob01")]
+position = Vector2(153, 554)
+flip_h = true
+
+[node name="Sprite2D8" parent="." instance=ExtResource("4_2ob01")]
+position = Vector2(342, 567)
+flip_h = true
+
+[node name="Sprite2D9" parent="." instance=ExtResource("4_2ob01")]
+position = Vector2(249, 576)
+flip_h = true
+
+[node name="Sprite2D10" parent="." instance=ExtResource("4_2ob01")]
+position = Vector2(948, 573)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_16vge")
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -6
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.76, 17.04)
+texture = ExtResource("5_5h5y4")
+expand_mode = 5

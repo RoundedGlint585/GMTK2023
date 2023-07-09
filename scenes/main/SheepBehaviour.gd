@@ -5,7 +5,7 @@ enum State {WOLFSKIN, SHEEPSKIN}
 const SPEED = 100.0
 
 @export
-var bushPunchingForce = 1000 #heuristic 
+var bushPunchingForce = 200 #heuristic 
 
 @export
 var stopDistance = 150
@@ -16,6 +16,11 @@ var isFreezed = false
 
 var finalSlot = null
 
+@onready
+var bushPunchTimer = Timer.new()
+
+@export
+var bushPunchCooldown = 1
 
 @onready 
 var mainCharacter: CharacterBody2D = get_tree().get_first_node_in_group("MainCharacter")
@@ -23,6 +28,10 @@ var mainCharacter: CharacterBody2D = get_tree().get_first_node_in_group("MainCha
 @onready var animation_player = $AnimationPlayer
 
 
+func _ready():
+	bushPunchTimer.one_shot = true
+	add_child(bushPunchTimer);
+	
 func _physics_process(delta):
 	check_wolf_visibility()
 	if canSeeWolf:
@@ -40,7 +49,8 @@ func check_and_apply_bush_collision():
 		var groups = body.get_groups()
 		if body.is_in_group("Bush"):
 			apply_impulse(-linear_velocity.normalized() * bushPunchingForce) #not cool. but static area can't detect collisions with rigidbody properly
-
+			isFreezed = true
+			bushPunchTimer.start(bushPunchCooldown)
 		
 func check_wolf_visibility():
 	var space_state = get_world_2d().direct_space_state	
@@ -64,6 +74,9 @@ func _integrate_forces(state):
 		
 	if finalSlot != null: #when finished
 		resolve_movement_to_finish()
+		return
+	
+	if isFreezed:
 		return
 		
 	resolve_movement_relatively_to_mc()
@@ -93,6 +106,14 @@ func resolve_movement_relatively_to_mc():
 
 
 func _process(delta):
+	if bushPunchTimer.time_left == 0.0 and finalSlot == null and isFreezed:
+		#small hack to disable false slipping after freeze gone
+		set_linear_velocity(position.direction_to(mainCharacter.position))
+		isFreezed = false
+	
+	if isFreezed:
+		return
+		
 	flip_sprite_with_direction()
 
 

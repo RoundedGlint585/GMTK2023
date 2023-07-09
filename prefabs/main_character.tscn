@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://d12g5oic6ggew"]
+[gd_scene load_steps=15 format=3 uid="uid://d12g5oic6ggew"]
 
 [ext_resource type="Script" path="res://scenes/main/CharacterBody2D.gd" id="1_oas8h"]
 [ext_resource type="Texture2D" uid="uid://cco60jgfujgpn" path="res://sprites/Wolf_idle.png" id="2_kdbrb"]
+[ext_resource type="Texture2D" uid="uid://b2lodh0fmqlyk" path="res://sprites/wolf_sheep_walks.png" id="4_4xwi2"]
 [ext_resource type="Texture2D" uid="uid://b88xrxgamfrqq" path="res://sprites/clounds.png" id="4_87dc5"]
 [ext_resource type="Texture2D" uid="uid://cbt0i8gesy3xs" path="res://sprites/wolf_sheep.png" id="5_3m386"]
+[ext_resource type="Texture2D" uid="uid://bwbqcbmykuftl" path="res://sprites/wolf_walks.png" id="5_calyn"]
 
 [sub_resource type="Animation" id="Animation_gmpd8"]
 length = 0.001
@@ -128,7 +130,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7fmwk"]
 resource_name = "walk_sheep"
-length = 0.7
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -140,7 +142,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_3m386")]
+"values": [ExtResource("4_4xwi2")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -152,7 +154,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -161,15 +163,15 @@ tracks/2/path = NodePath("Skin:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 1]
 }
 
 [sub_resource type="Animation" id="Animation_v28wr"]
 resource_name = "walk_wolf"
-length = 0.7
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -181,7 +183,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_kdbrb")]
+"values": [ExtResource("5_calyn")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -193,7 +195,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [9]
+"values": [3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -202,10 +204,10 @@ tracks/2/path = NodePath("Skin:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 4, 6, 7, 6, 5, 2]
+"values": [0, 2, 1, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c1vtq"]

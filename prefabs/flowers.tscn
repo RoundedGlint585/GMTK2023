@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dsi30o2ub14hu"]
 
 [ext_resource type="Script" path="res://scenes/main/Flowers.gd" id="1_2541a"]
-[ext_resource type="Texture2D" uid="uid://bg16n8tym78ud" path="res://sprites/Black.png" id="2_i0gwe"]
+[ext_resource type="Texture2D" uid="uid://bxeq401emlw2x" path="res://sprites/flowers1.png" id="2_h0nai"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpsi0"]
-size = Vector2(132, 127)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ycql"]
+radius = 53.0
 
 [node name="Flowers" type="StaticBody2D" groups=["Flowers"]]
 position = Vector2(862, 412)
@@ -13,8 +13,10 @@ collision_mask = 10
 script = ExtResource("1_2541a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_i0gwe")
+position = Vector2(2, 0)
+scale = Vector2(0.232, 0.232)
+texture = ExtResource("2_h0nai")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -0.5)
-shape = SubResource("RectangleShape2D_xpsi0")
+position = Vector2(8, -3)
+shape = SubResource("CircleShape2D_0ycql")

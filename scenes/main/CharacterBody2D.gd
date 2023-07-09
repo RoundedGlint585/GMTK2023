@@ -41,9 +41,10 @@ var isAllergyFreezed = false
 
 @onready var teleportsNode =  get_tree().get_first_node_in_group("Teleports")
 
-@onready var skin = $Skin
+@onready var skin : Sprite2D = $Skin as Sprite2D
 
 @onready var teleportStatus = TeleportState.NONACTIVE
+@onready var animation_player = $AnimationPlayer
 
 
 
@@ -112,11 +113,11 @@ func _process(delta):
 		timerSkinChange.one_shot = true
 		timerSkinChange.start(skinChangeCooldown)
 		inverse_current_state()
-		get_child(0).set_texture_by_state(currentState)
 		
 	process_teleport(delta)
+	
+	update_animation()
 	flip_sprite_with_direction()
-	pass
 		
 func process_teleport(_delta):
 	if Input.is_key_pressed(KEY_ENTER) and teleportStatus == TeleportState.NONACTIVE:
@@ -165,3 +166,18 @@ func inverse_current_state():
 		
 func get_current_state():
 	return currentState
+
+func update_animation():
+	if currentState == State.WOLFSKIN:
+		
+		if teleportStatus == TeleportState.NONACTIVE && velocity == Vector2.ZERO:
+			animation_player.play("idle_wolf")
+		elif  teleportStatus == TeleportState.NONACTIVE && velocity != Vector2.ZERO:
+			animation_player.play("walk_wolf")
+			
+	elif currentState == State.SHEEPSKIN:
+		
+		if teleportStatus == TeleportState.NONACTIVE && velocity == Vector2.ZERO:
+			animation_player.play("idle_sheep")
+		elif teleportStatus == TeleportState.NONACTIVE && velocity != Vector2.ZERO:
+			animation_player.play("walk_sheep")

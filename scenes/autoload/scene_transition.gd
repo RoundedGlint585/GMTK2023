@@ -18,3 +18,10 @@ func emit_transition_halfway():
 
 func emit_transition_finished():
 	transition_finished.emit()
+
+
+func close_screen_and_load_scene(path: String):
+	close_screen()
+	await transition_halfway
+	get_tree().change_scene_to_file(path)
+	open_screen()

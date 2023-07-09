@@ -166,6 +166,8 @@ func flip_sprite_with_direction():
 
 
 func get_teleport_position():
+	if teleportsNode == null:
+		return Vector2(-1, -1)
 	for teleport in teleportsNode.get_children():
 		if teleport.get_distance_to_mc() > teleportEffectiveDistance:
 			continue

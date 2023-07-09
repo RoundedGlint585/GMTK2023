@@ -1,5 +1,6 @@
 extends Area2D
 
+signal level_end
 var slots
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,6 +12,8 @@ func on_enter(body:Node2D):
 	if not body.is_in_group("Sheep"):
 		return
 	var slot = get_free_slot()
+	if slot == null:
+		emit_signal("level_end")
 	body.set_final_position(slot)
 	pass
 	
@@ -21,6 +24,7 @@ func get_free_slot():
 			continue
 		slot.isAvailable = false;
 		return slot;
+	return null
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 

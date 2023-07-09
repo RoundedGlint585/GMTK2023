@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://i7qstwr5ueq3"]
+[gd_scene load_steps=12 format=3 uid="uid://bf6cg5oa8enfd"]
 
 [ext_resource type="Script" path="res://scenes/main/SheepBehaviour.gd" id="1_43oyr"]
 [ext_resource type="Texture2D" uid="uid://dj3qr0g7e5sa4" path="res://sprites/sheep_scared.png" id="2_2tbce"]
@@ -190,6 +190,7 @@ lock_rotation = true
 linear_damp_mode = 1
 linear_damp = 2.0
 script = ExtResource("1_43oyr")
+bushPunchingForce = 2000
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "stay"

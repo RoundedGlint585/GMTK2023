@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 250.0
 
 
 enum TeleportState {NONACTIVE, ENTRY, MOVING, EXIT}
@@ -66,7 +65,7 @@ func _ready():
 	add_child(timerAllergy);
 	
 
-func get_input():
+func get_input(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * SPEED;
 
@@ -74,7 +73,7 @@ func _physics_process(delta):
 	if isAllergyFreezed:
 		return
 		
-	get_input()
+	get_input(delta)
 	var result = move_and_slide()
 	if not result:
 		return

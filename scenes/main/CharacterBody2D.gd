@@ -110,7 +110,8 @@ func resolve_collisions():
 		if col.get_collider().is_in_group("Flowers") and not isAllergyFreezed:
 			isAllergyFreezed = true
 			chichPlayer.play()
-			velocity = -velocity.normalized() * 100 #small hack to avoid eternal collision
+			#velocity = -velocity.normalized() * 10000 #small hack to avoid eternal collision
+			position = position - velocity.normalized() * 10
 			timerAllergy.start(allergyCooldown)
 		
 		
@@ -216,7 +217,8 @@ func update_animation():
 			if animation_player.current_animation == "sheep_to_wolf":
 				return
 			animation_player.play("sheep_to_wolf")
-		else:	
+		elif not isAllergyFreezed:	
+			
 			if teleportStatus == TeleportState.NONACTIVE && velocity == Vector2.ZERO:
 				animation_player.play("idle_wolf")
 			elif  teleportStatus == TeleportState.NONACTIVE && velocity != Vector2.ZERO:
@@ -227,7 +229,7 @@ func update_animation():
 			if animation_player.current_animation == "wolf_to_sheep":
 				return
 			animation_player.play("wolf_to_sheep")
-		else:	
+		elif not isAllergyFreezed:	
 			if teleportStatus == TeleportState.NONACTIVE && velocity == Vector2.ZERO:
 				animation_player.play("idle_sheep")
 			elif teleportStatus == TeleportState.NONACTIVE && velocity != Vector2.ZERO:
@@ -243,6 +245,6 @@ func update_animation():
 		animation_player.play("jump_out")
 		
 	if isAllergyFreezed:
-		if timerAllergy.time_left > 0.0 and animation_player.current_animation == "chich":
+		if animation_player.current_animation == "chich":
 			return
 		animation_player.play("chich")

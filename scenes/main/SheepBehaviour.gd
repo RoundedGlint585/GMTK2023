@@ -25,6 +25,8 @@ var mainCharacter: CharacterBody2D = get_tree().get_first_node_in_group("MainCha
 
 func _physics_process(delta):
 	check_wolf_visibility()
+	if canSeeWolf:
+		sleeping = false
 	if isFreezed:
 		return
 	check_and_apply_bush_collision()
@@ -37,7 +39,7 @@ func check_and_apply_bush_collision():
 	for body in get_colliding_bodies():
 		var groups = body.get_groups()
 		if body.is_in_group("Bush"):
-			pass#apply_impulse(-linear_velocity.normalized() * bushPunchingForce) #not cool. but static area can't detect collisions with rigidbody properly
+			apply_impulse(-linear_velocity.normalized() * bushPunchingForce) #not cool. but static area can't detect collisions with rigidbody properly
 
 		
 func check_wolf_visibility():
@@ -53,9 +55,10 @@ func check_wolf_visibility():
 	
 	
 	
+	
 func _integrate_forces(state):
 	if not canSeeWolf:
-		set_linear_velocity(Vector2(0, 0))
+		#set_linear_velocity(Vector2(0, 0))
 		play_animation_stay()
 		return
 		
@@ -79,10 +82,6 @@ func resolve_movement_relatively_to_mc():
 	var distanceToMC = position.distance_to(mainCharacter.position)
 	var direction = position.direction_to(mainCharacter.position)
 	direction = direction if mcCurrentState == State.SHEEPSKIN else -direction
-	for body in get_colliding_bodies():
-		if body == mainCharacter:
-			direction = Vector2(0, 0)
-			break
 			
 	if distanceToMC < stopDistance:
 		return

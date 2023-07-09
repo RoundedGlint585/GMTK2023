@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d12g5oic6ggew" path="res://prefabs/main_character.tscn" id="1_4bqfn"]
 [ext_resource type="Texture2D" uid="uid://coojr6raqj8cd" path="res://sprites/grass1.jpg" id="1_fmkf7"]
 [ext_resource type="PackedScene" uid="uid://c802u04nk487l" path="res://prefabs/wind_area.tscn" id="1_lb07o"]
-[ext_resource type="PackedScene" uid="uid://bf6cg5oa8enfd" path="res://prefabs/sheep.tscn" id="2_gqhbr"]
+[ext_resource type="PackedScene" path="res://prefabs/sheep.tscn" id="2_gqhbr"]
 [ext_resource type="PackedScene" uid="uid://bhx4x2sder7nq" path="res://prefabs/teleport.tscn" id="5_r5w3f"]
 [ext_resource type="PackedScene" uid="uid://dxkj7fin3n681" path="res://prefabs/agressive_bush.tscn" id="6_jbaeh"]
 [ext_resource type="PackedScene" uid="uid://cshq7vxqct218" path="res://prefabs/level_finish.tscn" id="7_cnbbl"]
@@ -18,6 +18,7 @@ height = 155.03
 y_sort_enabled = true
 
 [node name="WindArea" parent="." instance=ExtResource("1_lb07o")]
+position = Vector2(1014, 520)
 
 [node name="Node2D" type="Node2D" parent="."]
 z_index = -1000
@@ -29,14 +30,14 @@ texture = ExtResource("1_fmkf7")
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_4bqfn")]
 scale = Vector2(0.562451, 0.562451)
+motion_mode = 1
+force = 1000
 
-[node name="Sheep" parent="." groups=["Sheep"] instance=ExtResource("2_gqhbr")]
-y_sort_enabled = true
-position = Vector2(140, 191)
+[node name="Sheep3" parent="." instance=ExtResource("2_gqhbr")]
+position = Vector2(134, 219)
 
-[node name="Sheep2" parent="." groups=["Sheep"] instance=ExtResource("2_gqhbr")]
-y_sort_enabled = true
-position = Vector2(94, 396)
+[node name="Sheep" parent="." instance=ExtResource("2_gqhbr")]
+position = Vector2(90, 430)
 
 [node name="Bush" parent="." instance=ExtResource("6_jbaeh")]
 y_sort_enabled = true

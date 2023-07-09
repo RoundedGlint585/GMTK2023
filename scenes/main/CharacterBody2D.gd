@@ -9,7 +9,7 @@ enum State {WOLFSKIN, SHEEPSKIN}
 
 
 @export 
-var skinChangeCooldown = 1.0
+var skinChangeCooldown = 0.6
 
 
 @export
@@ -57,7 +57,6 @@ func _ready():
 	#skin changer timer
 	timerSkinChange.one_shot = true
 	add_child(timerSkinChange);
-	timerSkinChange.start(skinChangeCooldown)
 	
 	#teleport timer
 	timerTeleport.one_shot = true
@@ -73,7 +72,7 @@ func get_input(delta):
 	velocity = direction * SPEED;
 
 func _physics_process(delta):
-	if isAllergyFreezed:
+	if isAllergyFreezed or timerSkinChange.time_left > 0:
 		return
 		
 	get_input(delta)
@@ -116,6 +115,7 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_SPACE) and timerSkinChange.time_left == 0.0:
 		timerSkinChange.one_shot = true
 		timerSkinChange.start(skinChangeCooldown)
+		
 		inverse_current_state()
 		
 	process_teleport(delta)
@@ -185,16 +185,25 @@ func get_current_state():
 	return currentState
 
 func update_animation():
+	
 	if currentState == State.WOLFSKIN:
-		
-		if teleportStatus == TeleportState.NONACTIVE && velocity == Vector2.ZERO:
-			animation_player.play("idle_wolf")
-		elif  teleportStatus == TeleportState.NONACTIVE && velocity != Vector2.ZERO:
-			animation_player.play("walk_wolf")
+		if timerSkinChange.time_left > 0.0:
+			if animation_player.current_animation == "sheep_to_wolf":
+				return
+			animation_player.play("sheep_to_wolf")
+		else:	
+			if teleportStatus == TeleportState.NONACTIVE && velocity == Vector2.ZERO:
+				animation_player.play("idle_wolf")
+			elif  teleportStatus == TeleportState.NONACTIVE && velocity != Vector2.ZERO:
+				animation_player.play("walk_wolf")
 			
 	elif currentState == State.SHEEPSKIN:
-		
-		if teleportStatus == TeleportState.NONACTIVE && velocity == Vector2.ZERO:
-			animation_player.play("idle_sheep")
-		elif teleportStatus == TeleportState.NONACTIVE && velocity != Vector2.ZERO:
-			animation_player.play("walk_sheep")
+		if timerSkinChange.time_left > 0.0:
+			if animation_player.current_animation == "wolf_to_sheep":
+				return
+			animation_player.play("wolf_to_sheep")
+		else:	
+			if teleportStatus == TeleportState.NONACTIVE && velocity == Vector2.ZERO:
+				animation_player.play("idle_sheep")
+			elif teleportStatus == TeleportState.NONACTIVE && velocity != Vector2.ZERO:
+				animation_player.play("walk_sheep")

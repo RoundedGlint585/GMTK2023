@@ -48,10 +48,14 @@ var isAllergyFreezed = false
 @onready var teleportStatus = TeleportState.NONACTIVE
 @onready var animation_player = $AnimationPlayer
 
+@onready var firstPlayer: AudioStreamPlayer = $FirstPlayer
 
+@onready var secondPlayer: AudioStreamPlayer = $SecondPlayer
 
 @onready 
 var currentState = State.SHEEPSKIN
+
+var volumeValue
 
 func _ready():
 	#skin changer timer
@@ -66,6 +70,10 @@ func _ready():
 	timerAllergy.one_shot = true
 	add_child(timerAllergy);
 	
+	volumeValue = db_to_linear(firstPlayer.volume_db)
+	secondPlayer.volume_db = linear_to_db(0)
+	firstPlayer.play()	
+	secondPlayer.play()
 
 func get_input(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
@@ -177,13 +185,16 @@ func get_teleport_position():
 		
 func inverse_current_state():
 	if currentState == State.WOLFSKIN:
+		firstPlayer.volume_db = linear_to_db(0)
+		secondPlayer.volume_db = volumeValue
 		currentState = State.SHEEPSKIN
 	else:
+		firstPlayer.volume_db = volumeValue
+		secondPlayer.volume_db = linear_to_db(0)
 		currentState = State.WOLFSKIN
 		
 func get_current_state():
 	return currentState
-
 func update_animation():
 	
 	if currentState == State.WOLFSKIN:
@@ -196,7 +207,7 @@ func update_animation():
 				animation_player.play("idle_wolf")
 			elif  teleportStatus == TeleportState.NONACTIVE && velocity != Vector2.ZERO:
 				animation_player.play("walk_wolf")
-			
+
 	elif currentState == State.SHEEPSKIN:
 		if timerSkinChange.time_left > 0.0:
 			if animation_player.current_animation == "wolf_to_sheep":

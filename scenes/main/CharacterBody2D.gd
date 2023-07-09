@@ -30,6 +30,8 @@ var teleportExitTime = 1.0
 @export
 var teleportMovingTime = 1.0
 
+@onready
+var particles:CPUParticles2D = $CPUParticles2D
 
 @onready var timerSkinChange = Timer.new()
 
@@ -102,6 +104,8 @@ func resolve_collisions():
 
 func _process(delta):
 	
+	process_particles()
+	
 	if timerAllergy.time_left == 0 and isAllergyFreezed:
 		isAllergyFreezed = false
 		return
@@ -115,10 +119,21 @@ func _process(delta):
 		inverse_current_state()
 		
 	process_teleport(delta)
-	
+
 	update_animation()
 	flip_sprite_with_direction()
-		
+	
+	
+func process_particles():
+	particles.emitting = true if velocity.length() > 0.0 and not isAllergyFreezed else false
+	if not particles.emitting:
+		return
+	if velocity.x > 0:  # sprite direction
+		particles.gravity.x = -abs(particles.gravity.x)
+	elif velocity.x < 0:
+		particles.gravity.x  = abs(particles.gravity.x)
+	return
+			
 func process_teleport(_delta):
 	if Input.is_key_pressed(KEY_ENTER) and teleportStatus == TeleportState.NONACTIVE:
 		var newPosition = get_teleport_position()

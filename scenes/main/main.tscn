@@ -1,24 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://bl7kmv1cyrida"]
+[gd_scene load_steps=11 format=3 uid="uid://bl7kmv1cyrida"]
 
 [ext_resource type="PackedScene" uid="uid://d12g5oic6ggew" path="res://prefabs/main_character.tscn" id="1_4bqfn"]
 [ext_resource type="Texture2D" uid="uid://coojr6raqj8cd" path="res://sprites/grass1.jpg" id="1_fmkf7"]
 [ext_resource type="PackedScene" uid="uid://c802u04nk487l" path="res://prefabs/wind_area.tscn" id="1_lb07o"]
 [ext_resource type="Script" path="res://scenes/main/level.gd" id="1_w6o0b"]
 [ext_resource type="PackedScene" path="res://prefabs/sheep.tscn" id="2_gqhbr"]
+[ext_resource type="PackedScene" uid="uid://c8u0gc7srpoac" path="res://prefabs/passive_bush.tscn" id="2_l70qf"]
 [ext_resource type="PackedScene" uid="uid://bhx4x2sder7nq" path="res://prefabs/teleport.tscn" id="5_r5w3f"]
 [ext_resource type="PackedScene" uid="uid://dxkj7fin3n681" path="res://prefabs/agressive_bush.tscn" id="6_jbaeh"]
 [ext_resource type="PackedScene" uid="uid://cshq7vxqct218" path="res://prefabs/level_finish.tscn" id="7_cnbbl"]
-[ext_resource type="Texture2D" uid="uid://bxwfdqk0xhcy7" path="res://sprites/bush.png" id="8_7jw8w"]
 [ext_resource type="PackedScene" uid="uid://dsi30o2ub14hu" path="res://prefabs/flowers.tscn" id="9_u5kt0"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bf50b"]
-radius = 60.635
-height = 155.03
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_w6o0b")
 scenePath = "res://scenes/menu/main_menu.tscn"
+
+[node name="PassiveBush2" parent="." instance=ExtResource("2_l70qf")]
 
 [node name="WindArea" parent="." instance=ExtResource("1_lb07o")]
 position = Vector2(1014, 520)
@@ -56,23 +54,5 @@ scale = Vector2(0.33, 0.33)
 [node name="LevelFinish" parent="." instance=ExtResource("7_cnbbl")]
 y_sort_enabled = true
 position = Vector2(1003, 112)
-
-[node name="PassiveBush" type="StaticBody2D" parent="."]
-y_sort_enabled = true
-position = Vector2(435, 207)
-collision_layer = 7
-collision_mask = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="PassiveBush"]
-y_sort_enabled = true
-position = Vector2(-6, -5)
-scale = Vector2(0.474, 0.474)
-texture = ExtResource("8_7jw8w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PassiveBush"]
-y_sort_enabled = true
-position = Vector2(-2, 9)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_bf50b")
 
 [node name="Flowers" parent="." instance=ExtResource("9_u5kt0")]

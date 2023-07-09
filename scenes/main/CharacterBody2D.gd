@@ -114,10 +114,9 @@ func _process(delta):
 		inverse_current_state()
 		get_child(0).set_texture_by_state(currentState)
 		
-
 	process_teleport(delta)
-	
 	flip_sprite_with_direction()
+	pass
 		
 func process_teleport(_delta):
 	if Input.is_key_pressed(KEY_ENTER) and teleportStatus == TeleportState.NONACTIVE:
@@ -148,7 +147,6 @@ func flip_sprite_with_direction():
 		skin.scale.x = -abs(skin.scale.x)
 	elif velocity.x < 0:
 		skin.scale.x = abs(skin.scale.x)
-
 
 
 func get_teleport_position():

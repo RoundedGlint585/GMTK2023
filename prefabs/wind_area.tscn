@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c802u04nk487l"]
+[gd_scene load_steps=4 format=3 uid="uid://c802u04nk487l"]
 
 [ext_resource type="Script" path="res://scenes/main/WindArea.gd" id="1_8fkpv"]
+[ext_resource type="AudioStream" uid="uid://c0a3msf6e374s" path="res://Music/wind.mp3" id="2_d8v1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkyw8"]
 size = Vector2(656.5, 422.5)
@@ -11,3 +12,6 @@ script = ExtResource("1_8fkpv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kkyw8")
+
+[node name="windPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d8v1g")

@@ -26,6 +26,7 @@ var bushPunchCooldown = 1
 var mainCharacter: CharacterBody2D = get_tree().get_first_node_in_group("MainCharacter")
 @onready var skin = $Skin
 @onready var animation_player = $AnimationPlayer
+@onready var hitPlayer = $AudioStreamPlayer
 
 
 func _ready():
@@ -48,6 +49,7 @@ func check_and_apply_bush_collision():
 	for body in get_colliding_bodies():
 		var groups = body.get_groups()
 		if body.is_in_group("Bush"):
+			hitPlayer.play()
 			apply_impulse(-linear_velocity.normalized() * bushPunchingForce) #not cool. but static area can't detect collisions with rigidbody properly
 			isFreezed = true
 			bushPunchTimer.start(bushPunchCooldown)

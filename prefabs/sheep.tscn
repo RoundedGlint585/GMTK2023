@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bf6cg5oa8enfd"]
+[gd_scene load_steps=12 format=3 uid="uid://i7qstwr5ueq3"]
 
 [ext_resource type="Script" path="res://scenes/main/SheepBehaviour.gd" id="1_43oyr"]
 [ext_resource type="Texture2D" uid="uid://dj3qr0g7e5sa4" path="res://sprites/sheep_scared.png" id="2_2tbce"]
 [ext_resource type="Texture2D" uid="uid://daswwckcsg834" path="res://sprites/sheep_follow.png" id="2_6bc7a"]
 [ext_resource type="Texture2D" uid="uid://dm5mwrn66knxp" path="res://sprites/sheep_idle.png" id="4_bj571"]
+[ext_resource type="AudioStream" uid="uid://cbs3ikp5l3iek" path="res://Music/hit.mp3" id="5_e0dkv"]
 
 [sub_resource type="Animation" id="Animation_3ck4l"]
 length = 0.001
@@ -207,3 +208,6 @@ position = Vector2(4.76837e-07, 0)
 rotation = 1.5708
 scale = Vector2(0.33, 0.33)
 shape = SubResource("CapsuleShape2D_3is06")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_e0dkv")

@@ -5,6 +5,9 @@ var isActive = false
 var randomAccumulator = 0
 
 
+@onready
+var windPlayer = $windPlayer
+
 @onready 
 var workingTimer = Timer.new()
 
@@ -42,11 +45,13 @@ func _ready():
 func _process(delta):
 	if cooldownTimer.time_left == 0.0 and not isActive:
 		isActive = true
+		windPlayer.play()
 		workingTimer.start(workTime)
 		
 	if workingTimer.time_left == 0.0 and isActive:
 		isActive = false
 		cooldownTimer.start(cooldown)
+		windPlayer.stop()
 	
 	
 func on_enter(body:Node2D):

@@ -85,7 +85,13 @@ metadata/_edit_lock_ = true
 position = Vector2(590, 1887)
 scale = Vector2(0.562451, 0.562451)
 motion_mode = 1
+skinChangeCooldown = null
+allergyCooldown = null
 force = 1000
+teleportEffectiveDistance = null
+teleportEntryTime = null
+teleportExitTime = null
+teleportMovingTime = null
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
 limit_left = 0

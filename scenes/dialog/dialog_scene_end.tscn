@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuu607y53s6ae"]
+
+[ext_resource type="PackedScene" uid="uid://cpyi3n5nvxu1a" path="res://scenes/dialog/dialog.tscn" id="1_ecydx"]
+
+[node name="dialog_scene" type="Node2D"]
+
+[node name="Dialog" parent="." instance=ExtResource("1_ecydx")]
+dialog_path = "res://dialogs/dialog_end.json"
+load_next_scene = true
+next_scene_path = "res://scenes/menu/main_menu.tscn"

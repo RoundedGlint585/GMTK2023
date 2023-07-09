@@ -55,7 +55,7 @@ shader_parameter/strength = 0.268
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ate3e")
-scenePath = "res://scenes/menu/main_menu.tscn"
+scenePath = "res://scenes/dialog/dialog_scene4.tscn"
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Node2D" parent="."]

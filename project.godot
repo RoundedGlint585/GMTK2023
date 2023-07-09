@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="Start And Options"
-run/main_scene="res://scenes/main/main.tscn"
+run/main_scene="res://scenes/menu/main_menu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SceneTransition="*res://scenes/autoload/scene_transition.tscn"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="viewport"
 
 [dotnet]
 

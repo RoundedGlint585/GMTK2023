@@ -63,12 +63,11 @@ func _integrate_forces(state):
 		
 	
 func resolve_movement_to_finish():
-	var distance = position.distance_to(finalSlot.position)
+	var distance = global_position.distance_to(finalSlot.global_position)
 	if distance < 30.0:
 		isFreezed = true
 	if not isFreezed:
-		set_linear_velocity(position.direction_to(finalSlot.global_position) * 50)
-		# works but why?
+		set_linear_velocity(global_position.direction_to(finalSlot.global_position) * 50)
 
 func resolve_movement_relatively_to_mc():
 	var mcCurrentState = mainCharacter.get_current_state()

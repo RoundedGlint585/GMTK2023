@@ -5,6 +5,8 @@ signal dialog_end
 
 @export var dialog_path = ""
 @export var text_speed: float = 0.05
+@export var load_next_scene := false
+@export var next_scene_path = ""
 
 @onready var timer = $ColorRect/Timer
 @onready var end_phrase_timer = $ColorRect/EndPhraseTimer
@@ -44,7 +46,6 @@ func get_dialog() -> Array:
 	var output = json.data
 	
 	if typeof(output) == TYPE_ARRAY:
-		print(output)
 		return output
 	else:
 		print("wrong file format")
@@ -54,6 +55,7 @@ func get_dialog() -> Array:
 func next_phrase():
 	if phrase_num >= len(dialog):
 		dialog_end.emit()
+		load_next_scene_if_needed()
 		queue_free()
 		return
 	finished = false
@@ -90,4 +92,9 @@ func update_portrait():
 	portrait_sprite.texture = portrait_image
 	portrait_sprite.visible = true
 
-		
+
+func load_next_scene_if_needed():
+	if !load_next_scene:
+		return
+	SceneTransition.close_screen_and_load_scene(next_scene_path)
+	

@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scenes/main/CharacterBody2D.gd" id="1_oas8h"]
 [ext_resource type="Texture2D" uid="uid://cco60jgfujgpn" path="res://sprites/Wolf_idle.png" id="2_kdbrb"]
 [ext_resource type="Texture2D" uid="uid://b2lodh0fmqlyk" path="res://sprites/wolf_sheep_walks.png" id="4_4xwi2"]
-[ext_resource type="Texture2D" uid="uid://b88xrxgamfrqq" path="res://sprites/clounds.png" id="4_87dc5"]
 [ext_resource type="Texture2D" uid="uid://cbt0i8gesy3xs" path="res://sprites/wolf_sheep.png" id="5_3m386"]
 [ext_resource type="Texture2D" uid="uid://bwbqcbmykuftl" path="res://sprites/wolf_walks.png" id="5_calyn"]
 [ext_resource type="Texture2D" uid="uid://dogx1beq0bm44" path="res://sprites/wolf_to_sheep.png" id="6_dv42v"]
+[ext_resource type="Texture2D" uid="uid://to0ncjinn2o6" path="res://sprites/Cloud.png" id="7_2a4px"]
 [ext_resource type="AudioStream" uid="uid://cq7adbnoogjax" path="res://Music/first.mp3" id="8_cwaqv"]
 [ext_resource type="AudioStream" uid="uid://cquo47c1ek6kn" path="res://Music/second.mp3" id="9_qal7y"]
 [ext_resource type="AudioStream" uid="uid://c2kfy635e7prr" path="res://Music/chich.mp3" id="10_0sp8e"]
@@ -345,7 +345,7 @@ shape = SubResource("CapsuleShape2D_h5u3u")
 z_index = -1
 position = Vector2(15.1515, 39.3939)
 randomness = 0.31
-texture = ExtResource("4_87dc5")
+texture = ExtResource("7_2a4px")
 emission_shape = 3
 emission_rect_extents = Vector2(60, 1)
 gravity = Vector2(200, -80)

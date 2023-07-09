@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bl7kmv1cyrida"]
+[gd_scene load_steps=11 format=3 uid="uid://bl7kmv1cyrida"]
 
 [ext_resource type="PackedScene" uid="uid://d12g5oic6ggew" path="res://prefabs/main_character.tscn" id="1_4bqfn"]
 [ext_resource type="Texture2D" uid="uid://coojr6raqj8cd" path="res://sprites/grass1.jpg" id="1_fmkf7"]
@@ -8,15 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://dxkj7fin3n681" path="res://prefabs/agressive_bush.tscn" id="6_jbaeh"]
 [ext_resource type="PackedScene" uid="uid://cshq7vxqct218" path="res://prefabs/level_finish.tscn" id="7_cnbbl"]
 [ext_resource type="Texture2D" uid="uid://bxwfdqk0xhcy7" path="res://sprites/bush.png" id="8_7jw8w"]
-[ext_resource type="Script" path="res://scenes/main/Flowers.gd" id="9_ix0u0"]
-[ext_resource type="Texture2D" uid="uid://bg16n8tym78ud" path="res://sprites/Black.png" id="10_k16sn"]
+[ext_resource type="PackedScene" uid="uid://dsi30o2ub14hu" path="res://prefabs/flowers.tscn" id="9_u5kt0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bf50b"]
 radius = 60.635
 height = 155.03
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpsi0"]
-size = Vector2(132, 127)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -75,15 +71,4 @@ position = Vector2(-2, 9)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bf50b")
 
-[node name="Flowers" type="StaticBody2D" parent="." groups=["Flowers"]]
-position = Vector2(862, 412)
-collision_layer = 8
-collision_mask = 10
-script = ExtResource("9_ix0u0")
-
-[node name="Sprite2D" type="Sprite2D" parent="Flowers"]
-texture = ExtResource("10_k16sn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Flowers"]
-position = Vector2(2, -0.5)
-shape = SubResource("RectangleShape2D_xpsi0")
+[node name="Flowers" parent="." instance=ExtResource("9_u5kt0")]

@@ -16,6 +16,7 @@ var isFreezed = false
 
 var finalSlot = null
 
+
 @onready 
 var mainCharacter: CharacterBody2D = get_tree().get_first_node_in_group("MainCharacter")
 @onready var skin = $Skin
@@ -82,6 +83,9 @@ func resolve_movement_relatively_to_mc():
 		if body == mainCharacter:
 			direction = Vector2(0, 0)
 			break
+			
+	if distanceToMC < stopDistance:
+		return
 	set_linear_velocity(direction * SPEED)
 	if mcCurrentState == State.SHEEPSKIN:
 		play_animation_follow()

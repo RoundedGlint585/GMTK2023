@@ -19,6 +19,7 @@ var finalSlot = null
 @onready 
 var mainCharacter: CharacterBody2D = get_tree().get_first_node_in_group("MainCharacter")
 @onready var skin = $Skin
+@onready var animation_player = $AnimationPlayer
 
 
 func _physics_process(delta):
@@ -53,6 +54,7 @@ func check_wolf_visibility():
 func _integrate_forces(state):
 	if not canSeeWolf:
 		set_linear_velocity(Vector2(0, 0))
+		play_animation_stay()
 		return
 		
 	if finalSlot != null: #when finished
@@ -80,6 +82,10 @@ func resolve_movement_relatively_to_mc():
 			direction = Vector2(0, 0)
 			break
 	set_linear_velocity(direction * SPEED)
+	if mcCurrentState == State.SHEEPSKIN:
+		play_animation_follow()
+	elif mcCurrentState == State.WOLFSKIN:
+		play_animation_run_away()
 
 
 func _process(delta):
@@ -110,3 +116,14 @@ func set_final_position(slot):
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	finalSlot = slot
 
+
+func play_animation_run_away():
+	animation_player.play("run_scared")
+
+
+func play_animation_follow():
+	animation_player.play("follow")
+
+
+func play_animation_stay():
+	animation_player.play("stay")

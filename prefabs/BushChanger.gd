@@ -25,11 +25,11 @@ func _process(delta):
 	
 	if timer.time_left == 0.0:
 		isActivated = false
-		sprite.modulate = Color(1.0, 1.0, 1.0)
+		#sprite.modulate = Color(1.0, 1.0, 1.0)
 	pass
 	
 func on_enter(body:Node2D):
 	if body.is_in_group("Sheep") or body.is_in_group("MainCharacter") and not isActivated:
 		timer.start(time)
 		isActivated = true
-		sprite.modulate = Color(1.0, 0.0, 0.0)
+		#sprite.modulate = Color(1.0, 0.0, 0.0)

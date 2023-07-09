@@ -23,5 +23,13 @@ func get_free_slot():
 		return slot;
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func is_level_finished()->bool:
+	for slot in slots:
+		if slot.isAvailable:
+			return false
+	return true
+	
+	
 func _process(delta):
 	pass

@@ -5,16 +5,13 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+enum TeleportState {NONACTIVE, ENTRY, MOVING, EXIT}
+enum State {WOLFSKIN, SHEEPSKIN}
 
 
 @export 
 var skinChangeCooldown = 1.0
 
-@export
-var teleportCooldown = 1.0
 
 @export
 var allergyCooldown = 2.0
@@ -24,6 +21,15 @@ var force = 100
 
 @export
 var teleportEffectiveDistance = 80;
+
+@export
+var teleportEntryTime = 1.0
+
+@export
+var teleportExitTime = 1.0
+
+@export
+var teleportMovingTime = 1.0
 
 
 @onready var timerSkinChange = Timer.new()
@@ -38,7 +44,9 @@ var isAllergyFreezed = false
 
 @onready var skin = $Skin
 
-enum State {WOLFSKIN, SHEEPSKIN}
+@onready var teleportStatus = TeleportState.NONACTIVE
+
+
 
 @onready 
 var currentState = State.SHEEPSKIN
@@ -52,7 +60,6 @@ func _ready():
 	#teleport timer
 	timerTeleport.one_shot = true
 	add_child(timerTeleport);
-	timerTeleport.start(teleportCooldown)
 	
 	#allergy timer
 	timerAllergy.one_shot = true
@@ -108,17 +115,33 @@ func _process(delta):
 		inverse_current_state()
 		get_child(0).set_texture_by_state(currentState)
 		
-	if Input.is_key_pressed(KEY_ENTER) and timerTeleport.time_left == 0.0:
+
+	process_teleport(delta)
+	
+	flip_sprite_with_direction()
+		
+func process_teleport(_delta):
+	if Input.is_key_pressed(KEY_ENTER) and teleportStatus == TeleportState.NONACTIVE:
+		teleportStatus = TeleportState.ENTRY
+		timerTeleport.start(teleportEntryTime)
+		
+	if teleportStatus == TeleportState.ENTRY and timerTeleport.time_left == 0.0:
+		teleportStatus = TeleportState.MOVING
+		timerTeleport.start(teleportMovingTime)
+		#disable collision and visibility
+		get_node("CollisionShape2D").set_deferred("disabled", true)
+		visible = false
+	if teleportStatus == TeleportState.MOVING and timerTeleport.time_left == 0.0:
+		teleportStatus = TeleportState.EXIT
 		var newPosition = get_teleport_position()
 		if newPosition == Vector2(-1, -1):
 			return
 		position = newPosition
-		timerTeleport.one_shot = true
-		timerTeleport.start(teleportCooldown)
-		
-	
-	flip_sprite_with_direction()
-		
+		visible = true
+	if teleportStatus == TeleportState.EXIT and timerTeleport.time_left == 0.0:
+		get_node("CollisionShape2D").set_deferred("disabled", false)
+		teleportStatus = TeleportState.NONACTIVE
+
 
 func flip_sprite_with_direction():
 	if velocity.x > 0:  # sprite direction

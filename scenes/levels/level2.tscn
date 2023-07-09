@@ -13,7 +13,7 @@
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_31edl")
-scenePath = "res://scenes/menu/main_menu.tscn"
+scenePath = "res://scenes/levels/level3.tscn"
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Node2D" parent="."]
@@ -44,7 +44,6 @@ metadata/_edit_lock_ = true
 position = Vector2(590, 1887)
 scale = Vector2(0.562451, 0.562451)
 motion_mode = 1
-force = 1000
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
 limit_left = 0

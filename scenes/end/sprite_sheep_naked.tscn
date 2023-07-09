@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca06pq7ex2nf3"]
+
+[ext_resource type="Texture2D" uid="uid://0ixwq61eq5md" path="res://sprites/Jump_out.png" id="1_xtr76"]
+
+[sub_resource type="Animation" id="Animation_ofonc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vmb0s"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bb8ie"]
+_data = {
+"RESET": SubResource("Animation_ofonc"),
+"new_animation": SubResource("Animation_vmb0s")
+}
+
+[node name="Sprite2D5" type="Sprite2D"]
+position = Vector2(789, 552)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("1_xtr76")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_bb8ie")
+}

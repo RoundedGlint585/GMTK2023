@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpyi3n5nvxu1a"]
+[gd_scene load_steps=12 format=3 uid="uid://cpyi3n5nvxu1a"]
 
-[ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="1_4v45t"]
 [ext_resource type="Script" path="res://scenes/dialog/dialog.gd" id="1_dhrbv"]
 [ext_resource type="Texture2D" uid="uid://d3y2fvx6pevnc" path="res://sprites/fox.png" id="2_0ppqh"]
+[ext_resource type="Texture2D" uid="uid://pui0vbhe2gim" path="res://sprites/dialogue_bg.png" id="2_u1ww5"]
+[ext_resource type="Texture2D" uid="uid://ddugwf54rdgdq" path="res://sprites/grass2.jpg" id="2_ve0uh"]
+[ext_resource type="Texture2D" uid="uid://bdoeag013beqc" path="res://sprites/indicatir.png" id="4_hmkln"]
 
 [sub_resource type="Animation" id="Animation_1kga8"]
 length = 0.001
@@ -46,7 +48,7 @@ _data = {
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -56,13 +58,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(649, 159)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_gipor"]
 resource_name = "float"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -71,6 +85,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(649, 159), Vector2(649, 170), Vector2(649, 159)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 30)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1rtdw"]
@@ -84,32 +110,70 @@ process_mode = 3
 script = ExtResource("1_dhrbv")
 dialog_path = "res://dialogs/dialog_movement.json"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(400, 200)
-offset_left = 265.0
-offset_top = 397.0
-offset_right = 965.0
-offset_bottom = 597.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(0.482353, 0.482353, 0.482353, 1)
-
-[node name="Name" type="RichTextLabel" parent="ColorRect"]
-custom_minimum_size = Vector2(400, 50)
-layout_mode = 0
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-text = "FOx"
+texture = ExtResource("2_ve0uh")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(400, 200)
+offset_left = 214.0
+offset_top = 356.0
+offset_right = 841.0
+offset_bottom = 679.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_u1ww5")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 10.0
+offset_right = 235.0
+offset_bottom = 98.0
+texture = ExtResource("2_u1ww5")
+expand_mode = 1
+
+[node name="Name" type="RichTextLabel" parent="ColorRect/TextureRect"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 0
+offset_left = 39.0
+offset_top = 28.0
+offset_right = 439.0
+offset_bottom = 78.0
+theme_override_colors/default_color = Color(0.662745, 0.372549, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 24
+text = "Fox"
+tab_size = 20
 
 [node name="Text" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 49.0
-offset_right = 642.0
-offset_bottom = 169.0
+offset_left = 98.0
+offset_top = 89.0
+offset_right = 526.0
+offset_bottom = 242.0
+tooltip_text = "yoooo 
+textw"
+theme_override_colors/default_color = Color(0.662745, 0.372549, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+text = "Yoooo text"
 
 [node name="Portrait" type="Sprite2D" parent="ColorRect"]
-position = Vector2(97, -165)
+position = Vector2(301, -140)
 texture = ExtResource("2_0ppqh")
 hframes = 2
 
@@ -127,9 +191,9 @@ position = Vector2(410, -164)
 [node name="EndPhraseTimer" type="Timer" parent="ColorRect"]
 
 [node name="Indicator" type="Sprite2D" parent="ColorRect"]
-position = Vector2(649, 159)
+position = Vector2(138, 145)
 scale = Vector2(0.494087, 0.304755)
-texture = ExtResource("1_4v45t")
+texture = ExtResource("4_hmkln")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/Indicator"]
 autoplay = "float"

@@ -32,7 +32,13 @@ texture = ExtResource("1_fmkf7")
 [node name="MainCharacter" parent="." instance=ExtResource("1_4bqfn")]
 scale = Vector2(0.562451, 0.562451)
 motion_mode = 1
+skinChangeCooldown = null
+allergyCooldown = null
 force = 1000
+teleportEffectiveDistance = null
+teleportEntryTime = null
+teleportExitTime = null
+teleportMovingTime = null
 
 [node name="Sheep3" parent="." instance=ExtResource("2_gqhbr")]
 position = Vector2(134, 219)

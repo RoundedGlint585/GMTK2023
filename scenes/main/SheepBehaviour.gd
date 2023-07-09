@@ -26,6 +26,7 @@ func _physics_process(delta):
 	if isFreezed:
 		return
 	check_and_apply_bush_collision()
+	
 	return
 	
 	

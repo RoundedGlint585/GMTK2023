@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c802u04nk487l"]
+
+[ext_resource type="Script" path="res://scenes/main/WindArea.gd" id="1_8fkpv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkyw8"]
+size = Vector2(656.5, 422.5)
+
+[node name="WindArea" type="Area2D"]
+position = Vector2(287, 286)
+script = ExtResource("1_8fkpv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kkyw8")

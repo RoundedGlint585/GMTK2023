@@ -17,6 +17,9 @@ var skinChangeCooldown = 1.0
 var teleportCooldown = 1.0
 
 @export
+var allergyCooldown = 2.0
+
+@export
 var force = 100
 
 @export
@@ -26,6 +29,10 @@ var teleportEffectiveDistance = 80;
 @onready var timerSkinChange = Timer.new()
 
 @onready var timerTeleport = Timer.new()
+
+@onready var timerAllergy = Timer.new()
+
+var isAllergyFreezed = false
 
 @onready var teleportsNode =  get_tree().get_first_node_in_group("Teleports")
 
@@ -47,12 +54,19 @@ func _ready():
 	add_child(timerTeleport);
 	timerTeleport.start(teleportCooldown)
 	
+	#allergy timer
+	timerAllergy.one_shot = true
+	add_child(timerAllergy);
+	
 
 func get_input():
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * SPEED;
 
 func _physics_process(delta):
+	if isAllergyFreezed:
+		return
+		
 	get_input()
 	var result = move_and_slide()
 	if not result:
@@ -64,12 +78,30 @@ func resolve_collisions():
 	for i in get_slide_collision_count():
 		var col = get_slide_collision(i)
 		
-		if not col.get_collider() is RigidBody2D:
+		if col.get_collider() is RigidBody2D:
+			col.get_collider().apply_force(col.get_normal() * -force)
 			continue
 		
-		col.get_collider().apply_force(col.get_normal() * -force)
+		if not col.get_collider() is Node2D:
+			return
+		
+		if col.get_collider().is_in_group("Flowers") and not isAllergyFreezed:
+			isAllergyFreezed = true
+			velocity = -velocity.normalized() * 100 #small hack to avoid eternal collision
+			timerAllergy.start(allergyCooldown)
+		
+		
+		
 
 func _process(delta):
+	
+	if timerAllergy.time_left == 0 and isAllergyFreezed:
+		isAllergyFreezed = false
+		return
+	
+	if isAllergyFreezed:
+		return
+	
 	if Input.is_key_pressed(KEY_SPACE) and timerSkinChange.time_left == 0.0:
 		timerSkinChange.one_shot = true
 		timerSkinChange.start(skinChangeCooldown)

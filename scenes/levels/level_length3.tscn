@@ -1,0 +1,251 @@
+[gd_scene load_steps=8 format=3 uid="uid://1l28ptxgfodu"]
+
+[ext_resource type="Script" path="res://scenes/main/level.gd" id="1_5k3w0"]
+[ext_resource type="Texture2D" uid="uid://coojr6raqj8cd" path="res://sprites/grass1.jpg" id="2_ld1ec"]
+[ext_resource type="Texture2D" uid="uid://ddugwf54rdgdq" path="res://sprites/grass2.jpg" id="3_gtrt2"]
+[ext_resource type="PackedScene" uid="uid://d12g5oic6ggew" path="res://prefabs/main_character.tscn" id="4_c4hk8"]
+[ext_resource type="PackedScene" uid="uid://cshq7vxqct218" path="res://prefabs/level_finish.tscn" id="5_dgj6b"]
+[ext_resource type="PackedScene" uid="uid://c8u0gc7srpoac" path="res://prefabs/passive_bush.tscn" id="6_mvd6f"]
+[ext_resource type="PackedScene" uid="uid://bf6cg5oa8enfd" path="res://prefabs/sheep.tscn" id="7_og50x"]
+
+[node name="Main" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_5k3w0")
+scenePath = "res://scenes/menu/main_menu.tscn"
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -1000
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+offset_right = 1200.0
+offset_bottom = 675.0
+texture = ExtResource("2_ld1ec")
+
+[node name="TextureRect2" type="TextureRect" parent="Background"]
+offset_top = 675.0
+offset_right = 1200.0
+offset_bottom = 1350.0
+texture = ExtResource("3_gtrt2")
+
+[node name="TextureRect3" type="TextureRect" parent="Background"]
+offset_top = 1350.0
+offset_right = 1200.0
+offset_bottom = 2025.0
+texture = ExtResource("2_ld1ec")
+
+[node name="MainCharacter" parent="." instance=ExtResource("4_c4hk8")]
+position = Vector2(569, 1726)
+scale = Vector2(0.562451, 0.562451)
+motion_mode = 1
+force = 1000
+
+[node name="Camera2D" type="Camera2D" parent="MainCharacter"]
+limit_left = 0
+limit_top = 0
+limit_right = 1200
+limit_bottom = 2025
+
+[node name="LevelFinish" parent="." instance=ExtResource("5_dgj6b")]
+y_sort_enabled = true
+position = Vector2(1003, 112)
+
+[node name="PassiveBushes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="PassiveBush" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(3, 1796)
+
+[node name="PassiveBush2" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(0, 1714)
+
+[node name="PassiveBush3" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(3, 1624)
+
+[node name="PassiveBush4" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-5, 1513)
+
+[node name="PassiveBush5" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-2, 1419)
+
+[node name="PassiveBush6" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-12, 1314)
+
+[node name="PassiveBush7" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-9, 1193)
+
+[node name="PassiveBush8" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-16, 1072)
+
+[node name="PassiveBush9" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1, 985)
+
+[node name="PassiveBush10" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-33, 884)
+
+[node name="PassiveBush11" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-3, 807)
+
+[node name="PassiveBush12" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-33, 713)
+
+[node name="PassiveBush13" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(14, 639)
+
+[node name="PassiveBush14" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-20, 552)
+
+[node name="PassiveBush15" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(20, 475)
+
+[node name="PassiveBush16" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-27, 367)
+
+[node name="PassiveBush17" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-7, 259)
+
+[node name="PassiveBush18" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(-4, 141)
+
+[node name="PassiveBush19" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(3, 33)
+
+[node name="PassiveBush20" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(3, 33)
+
+[node name="PassiveBush21" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1217, 1665)
+
+[node name="PassiveBush47" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1177, 1777)
+
+[node name="PassiveBush48" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1122, 1879)
+
+[node name="PassiveBush49" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1143, 1964)
+
+[node name="PassiveBush50" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1007, 1977)
+
+[node name="PassiveBush51" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(865, 1973)
+
+[node name="PassiveBush52" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(715, 2022)
+
+[node name="PassiveBush53" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(567, 2028)
+
+[node name="PassiveBush54" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(22, 1890)
+
+[node name="PassiveBush55" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(37, 1985)
+
+[node name="PassiveBush56" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(132, 2063)
+
+[node name="PassiveBush57" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(242, 2061)
+
+[node name="PassiveBush58" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(359, 2048)
+
+[node name="PassiveBush59" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(482, 2044)
+
+[node name="PassiveBush22" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1214, 1583)
+
+[node name="PassiveBush23" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1217, 1493)
+
+[node name="PassiveBush24" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1209, 1382)
+
+[node name="PassiveBush25" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1212, 1288)
+
+[node name="PassiveBush26" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1202, 1183)
+
+[node name="PassiveBush27" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1205, 1062)
+
+[node name="PassiveBush28" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1198, 941)
+
+[node name="PassiveBush29" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1215, 854)
+
+[node name="PassiveBush30" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1181, 753)
+
+[node name="PassiveBush31" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1211, 676)
+
+[node name="PassiveBush32" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1181, 582)
+
+[node name="PassiveBush33" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1228, 508)
+
+[node name="PassiveBush34" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1194, 421)
+
+[node name="PassiveBush35" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1234, 344)
+
+[node name="PassiveBush36" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1187, 236)
+
+[node name="PassiveBush37" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1207, 128)
+
+[node name="PassiveBush38" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1210, 10)
+
+[node name="PassiveBush39" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(1063, -53)
+
+[node name="PassiveBush40" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(940, -64)
+
+[node name="PassiveBush41" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(804, -43)
+
+[node name="PassiveBush42" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(669, -43)
+
+[node name="PassiveBush43" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(524, -23)
+
+[node name="PassiveBush44" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(369, -20)
+
+[node name="PassiveBush45" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(213, -19)
+
+[node name="PassiveBush46" parent="PassiveBushes" instance=ExtResource("6_mvd6f")]
+position = Vector2(82, 4)
+
+[node name="Sheeps" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sheep" parent="Sheeps" instance=ExtResource("7_og50x")]
+position = Vector2(374, 1774)
+
+[node name="Sheep2" parent="Sheeps" instance=ExtResource("7_og50x")]
+position = Vector2(481, 1852)
+
+[node name="Sheep3" parent="Sheeps" instance=ExtResource("7_og50x")]
+position = Vector2(627, 1846)
+
+[node name="Sheep4" parent="Sheeps" instance=ExtResource("7_og50x")]
+position = Vector2(729, 1817)
+
+[node name="Sheep5" parent="Sheeps" instance=ExtResource("7_og50x")]
+position = Vector2(353, 1871)
+
+[node name="Sheep6" parent="Sheeps" instance=ExtResource("7_og50x")]
+position = Vector2(581, 1910)

@@ -1,18 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8u0gc7srpoac"]
 
-[ext_resource type="Texture2D" uid="uid://bg16n8tym78ud" path="res://sprites/Black.png" id="1_y2jv1"]
+[ext_resource type="Texture2D" uid="uid://bxwfdqk0xhcy7" path="res://sprites/bush.png" id="1_pge37"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3x47"]
-size = Vector2(125, 127)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bf50b"]
+radius = 127.0
+height = 328.0
 
 [node name="PassiveBush" type="StaticBody2D"]
 position = Vector2(435, 207)
+scale = Vector2(0.5, 0.5)
 collision_layer = 3
 collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_y2jv1")
+texture = ExtResource("1_pge37")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_n3x47")
+position = Vector2(6, 20)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bf50b")

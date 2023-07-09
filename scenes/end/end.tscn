@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckreg1xyefhqs"]
+[gd_scene load_steps=11 format=3 uid="uid://ckreg1xyefhqs"]
 
 [ext_resource type="Texture2D" uid="uid://dnpfxcpneyk2m" path="res://sprites/fox_cool.png" id="1_inukx"]
 [ext_resource type="Texture2D" uid="uid://bt67x84xxashp" path="res://sprites/wolf_cool.png" id="2_xlc3n"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ca06pq7ex2nf3" path="res://scenes/end/sprite_sheep_naked.tscn" id="4_2ob01"]
 [ext_resource type="Texture2D" uid="uid://c6x6qm37yfivf" path="res://scenes/end/final_bg.png" id="5_5h5y4"]
 [ext_resource type="AudioStream" uid="uid://bdlel8hxlj2dd" path="res://Music/finish.mp3" id="6_2tllx"]
+[ext_resource type="PackedScene" uid="uid://do4to1e3rrecx" path="res://scenes/end/sprite_sheep_naked2.tscn" id="7_v8k5c"]
 
 [sub_resource type="Animation" id="Animation_b7xuv"]
 length = 0.001
@@ -117,6 +118,27 @@ _data = {
 }
 
 [node name="end" type="Node2D"]
+
+[node name="Sprite2D11" parent="." instance=ExtResource("7_v8k5c")]
+position = Vector2(953, 544)
+
+[node name="Sprite2D12" parent="." instance=ExtResource("7_v8k5c")]
+position = Vector2(844, 551)
+
+[node name="Sprite2D13" parent="." instance=ExtResource("7_v8k5c")]
+position = Vector2(748, 555)
+
+[node name="Sprite2D14" parent="." instance=ExtResource("7_v8k5c")]
+position = Vector2(317, 552)
+flip_h = true
+
+[node name="Sprite2D15" parent="." instance=ExtResource("7_v8k5c")]
+position = Vector2(188, 548)
+flip_h = true
+
+[node name="Sprite2D16" parent="." instance=ExtResource("7_v8k5c")]
+position = Vector2(69, 543)
+flip_h = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(449, 170)

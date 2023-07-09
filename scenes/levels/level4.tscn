@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cm7cko3j3il80"]
+[gd_scene load_steps=16 format=3 uid="uid://urggwjrjj2k2"]
 
 [ext_resource type="Script" path="res://scenes/main/level.gd" id="1_ate3e"]
 [ext_resource type="Texture2D" uid="uid://coojr6raqj8cd" path="res://sprites/grass1.jpg" id="2_ue4le"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d12g5oic6ggew" path="res://prefabs/main_character.tscn" id="4_k6y25"]
 [ext_resource type="PackedScene" uid="uid://cshq7vxqct218" path="res://prefabs/level_finish.tscn" id="5_x677v"]
 [ext_resource type="PackedScene" uid="uid://c8u0gc7srpoac" path="res://prefabs/passive_bush.tscn" id="6_prnlc"]
-[ext_resource type="PackedScene" uid="uid://i7qstwr5ueq3" path="res://prefabs/sheep.tscn" id="7_6d1or"]
+[ext_resource type="PackedScene" uid="uid://bf6cg5oa8enfd" path="res://prefabs/sheep.tscn" id="7_6d1or"]
 [ext_resource type="PackedScene" uid="uid://dsi30o2ub14hu" path="res://prefabs/flowers.tscn" id="8_3phdr"]
 [ext_resource type="PackedScene" uid="uid://bhx4x2sder7nq" path="res://prefabs/teleport.tscn" id="9_6i574"]
 [ext_resource type="Shader" path="res://scenes/main/EdgeOutline.gdshader" id="10_dyctw"]

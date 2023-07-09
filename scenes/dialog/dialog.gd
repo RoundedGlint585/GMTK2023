@@ -10,7 +10,7 @@ signal dialog_end
 
 @onready var timer = $ColorRect/Timer
 @onready var end_phrase_timer = $ColorRect/EndPhraseTimer
-@onready var name_label: RichTextLabel = $ColorRect/Name
+@onready var name_label: RichTextLabel = $ColorRect/TextureRect/Name
 @onready var text_label: RichTextLabel = $ColorRect/Text
 @onready var indicator = $ColorRect/Indicator
 @onready var portrait_sprite: Sprite2D = $ColorRect/Portrait

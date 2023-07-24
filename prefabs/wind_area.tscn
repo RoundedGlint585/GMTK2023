@@ -1,17 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://c802u04nk487l"]
+[gd_scene load_steps=8 format=3 uid="uid://c802u04nk487l"]
 
 [ext_resource type="Script" path="res://scenes/main/WindArea.gd" id="1_8fkpv"]
 [ext_resource type="AudioStream" uid="uid://c0a3msf6e374s" path="res://Music/wind.mp3" id="2_d8v1g"]
+[ext_resource type="Texture2D" uid="uid://7h76l1el6lp5" path="res://sprites/wind (1).png" id="3_p5vvg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkyw8"]
-size = Vector2(656.5, 422.5)
+size = Vector2(381, 317)
+
+[sub_resource type="Animation" id="Animation_ognis"]
+resource_name = "wind"
+length = 0.634
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 5]
+}
+
+[sub_resource type="Animation" id="Animation_d4cjk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_liesd"]
+_data = {
+"RESET": SubResource("Animation_d4cjk"),
+"wind": SubResource("Animation_ognis")
+}
 
 [node name="WindArea" type="Area2D"]
 position = Vector2(287, 286)
 script = ExtResource("1_8fkpv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 3.5)
 shape = SubResource("RectangleShape2D_kkyw8")
 
 [node name="windPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_d8v1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-42, 22)
+scale = Vector2(0.604818, 0.914063)
+texture = ExtResource("3_p5vvg")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_liesd")
+}

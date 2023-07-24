@@ -4,8 +4,6 @@ var isActive = false
 
 var randomAccumulator = 0
 
-@onready var animation_player = $Sprite2D/AnimationPlayer
-
 @onready
 var windPlayer = $windPlayer
 
@@ -27,6 +25,12 @@ var direction = Vector2(-1.0, 0.0)
 @export
 var windForce = 5000.0
 
+@onready 
+var animationPlayer = $AnimationPlayer
+
+@onready
+var sprite = $Sprite2D
+
 var sheeps = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,16 +49,18 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if cooldownTimer.time_left == 0.0 and not isActive:
+		sprite.visible = true
 		isActive = true
 		#windPlayer.play()
-		animation_player.play("default")
+		animationPlayer.play("wind")
 		workingTimer.start(workTime)
 		
 	if workingTimer.time_left == 0.0 and isActive:
 		isActive = false
 		cooldownTimer.start(cooldown)
+		sprite.visible = false
 		#windPlayer.stop()
-		animation_player.play("no_wind")
+
 	
 	
 func on_enter(body:Node2D):
@@ -70,6 +76,6 @@ func _physics_process(delta):
 		return
 		
 	for sheep in sheeps:
-		sheep.apply_force(direction * delta * windForce)
+		sheep.apply_impulse(direction * windForce)
 
 	

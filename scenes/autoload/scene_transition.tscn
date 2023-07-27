@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/autoload/scene_transition.gd" id="1_iykkw"]
 [ext_resource type="Shader" path="res://scenes/autoload/scene_transition.gdshader" id="2_qn1yy"]
+[ext_resource type="Texture2D" uid="uid://cvnp558jgm5gq" path="res://scenes/autoload/scene_transition.tres" id="2_r7hxg"]
+[ext_resource type="Texture2D" uid="uid://fwoi6s8ue4ej" path="res://scenes/autoload/scene_transition2.tres" id="3_wm0xr"]
 
 [sub_resource type="Animation" id="Animation_3e0sj"]
 length = 0.001
@@ -28,6 +30,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/transition_texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_r7hxg")]
 }
 
 [sub_resource type="Animation" id="Animation_bgvo2"]
@@ -71,6 +85,18 @@ tracks/2/keys = {
 "method": &"emit_transition_halfway"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:material:shader_parameter/transition_texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_r7hxg")]
+}
 
 [sub_resource type="Animation" id="Animation_u6ytc"]
 resource_name = "open_screen"
@@ -113,6 +139,18 @@ tracks/2/keys = {
 "method": &"emit_transition_finished"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:material:shader_parameter/transition_texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_wm0xr")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hmlur"]
 _data = {
@@ -121,16 +159,11 @@ _data = {
 "open_screen": SubResource("Animation_u6ytc")
 }
 
-[sub_resource type="Gradient" id="Gradient_q75ok"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_exdkq"]
-gradient = SubResource("Gradient_q75ok")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avi8e"]
 shader = ExtResource("2_qn1yy")
 shader_parameter/transition_color = Color(0.705882, 0.94902, 0.556863, 1)
 shader_parameter/percent = 0.0
-shader_parameter/transition_texture = SubResource("GradientTexture1D_exdkq")
+shader_parameter/transition_texture = ExtResource("2_r7hxg")
 
 [node name="SceneTransition" type="CanvasLayer"]
 process_mode = 3

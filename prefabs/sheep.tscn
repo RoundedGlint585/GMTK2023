@@ -190,7 +190,7 @@ lock_rotation = true
 linear_damp_mode = 1
 linear_damp = 2.0
 script = ExtResource("1_43oyr")
-bushPunchingForce = 2000
+bushPunchingForce = 700
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "stay"

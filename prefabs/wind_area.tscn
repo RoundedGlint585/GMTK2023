@@ -7,6 +7,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkyw8"]
 size = Vector2(381, 317)
 
+[sub_resource type="Animation" id="Animation_d4cjk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_ognis"]
 resource_name = "wind"
 length = 0.634
@@ -24,21 +39,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 5]
 }
 
-[sub_resource type="Animation" id="Animation_d4cjk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_liesd"]
 _data = {
 "RESET": SubResource("Animation_d4cjk"),
@@ -48,6 +48,8 @@ _data = {
 [node name="WindArea" type="Area2D"]
 position = Vector2(287, 286)
 script = ExtResource("1_8fkpv")
+direction = Vector2(1, 0)
+windForce = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 3.5)
@@ -63,6 +65,7 @@ texture = ExtResource("3_p5vvg")
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.7
 libraries = {
 "": SubResource("AnimationLibrary_liesd")
 }

@@ -1,4 +1,4 @@
 [
-	{"name": "Fox bro", "text": "Whew , it sure is windy here! Oh, my fur…"},
-	{"name": "Fox bro", "text": "Hey, you best be careful there! Or both you and our sheep will get hurled away."}
+	{"name": "Fox bro", "text": "Whew, it sure is [tornado radius=5 freq=2]windy[/tornado] here! Oh, my fur…"},
+	{"name": "Fox bro", "text": "Hey, you best be careful there! Or both you and our sheep will get [tornado radius=5 freq=2]hurled away[/tornado]."}
 ]

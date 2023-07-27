@@ -1,7 +1,7 @@
 [
-	{"name": "Fox bro", "text": "By the way, did you take your pollen allergy medicine?"},
+	{"name": "Fox bro", "text": "By the way, did you take your [b]pollen allergy medicine?[/b]"},
 	{"name": "Fox bro", "text": "You ran out of it?! God, why do I have to go through this..."},
-	{"name": "Fox bro", "text": "Okay. Lucky for us, I predicted that would happen and dug a bunch of holes. "},
-	{"name": "Fox bro", "text": "You can travel through them to avoid those flowers."},
+	{"name": "Fox bro", "text": "Okay. Lucky for us, I predicted that would happen and dug a bunch of [b]holes[/b]."},
+	{"name": "Fox bro", "text": "You can [b]travel through them with ENTER[/b] to avoid those flowers."},
 	{"name": "Fox bro", "text": "Just be mindful and don’t expect sheep to follow you. They are too fluffy for that. "}
 ]

@@ -56,7 +56,7 @@ func next_phrase():
 	if phrase_num >= len(dialog):
 		dialog_end.emit()
 		load_next_scene_if_needed()
-		queue_free()
+		#queue_free()
 		return
 	finished = false
 	

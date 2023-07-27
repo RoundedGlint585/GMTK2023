@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://coojr6raqj8cd" path="res://sprites/grass1.jpg" id="3_2rr8v"]
 [ext_resource type="Texture2D" uid="uid://ddugwf54rdgdq" path="res://sprites/grass2.jpg" id="3_ywtbm"]
 [ext_resource type="PackedScene" uid="uid://d12g5oic6ggew" path="res://prefabs/main_character.tscn" id="4_4s7lw"]
-[ext_resource type="PackedScene" uid="uid://i7qstwr5ueq3" path="res://prefabs/sheep.tscn" id="5_c58y8"]
+[ext_resource type="PackedScene" uid="uid://bf6cg5oa8enfd" path="res://prefabs/sheep.tscn" id="5_c58y8"]
 [ext_resource type="PackedScene" uid="uid://c8u0gc7srpoac" path="res://prefabs/passive_bush.tscn" id="7_i3fdf"]
 [ext_resource type="PackedScene" uid="uid://cshq7vxqct218" path="res://prefabs/level_finish.tscn" id="8_kgcj3"]
 
@@ -159,13 +159,13 @@ position = Vector2(767, 1323)
 position = Vector2(367, 1429)
 
 [node name="PassiveBush30" parent="PassiveBushes" instance=ExtResource("7_i3fdf")]
-position = Vector2(891, 1411)
+position = Vector2(892, 1411)
 
 [node name="PassiveBush31" parent="PassiveBushes" instance=ExtResource("7_i3fdf")]
-position = Vector2(601, 955)
+position = Vector2(593, 943)
 
 [node name="PassiveBush32" parent="PassiveBushes" instance=ExtResource("7_i3fdf")]
-position = Vector2(727, 1173)
+position = Vector2(731, 1178)
 
 [node name="PassiveBush60" parent="PassiveBushes" instance=ExtResource("7_i3fdf")]
 position = Vector2(1013, 1411)

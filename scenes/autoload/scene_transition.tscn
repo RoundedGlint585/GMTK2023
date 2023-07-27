@@ -128,7 +128,7 @@ gradient = SubResource("Gradient_q75ok")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avi8e"]
 shader = ExtResource("2_qn1yy")
-shader_parameter/transition_color = Color(0.372549, 0, 0.25098, 1)
+shader_parameter/transition_color = Color(0.705882, 0.94902, 0.556863, 1)
 shader_parameter/percent = 0.0
 shader_parameter/transition_texture = SubResource("GradientTexture1D_exdkq")
 

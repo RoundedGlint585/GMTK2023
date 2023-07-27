@@ -77,7 +77,8 @@ func _ready():
 	add_child(timerAllergy);
 	
 	volumeValue = db_to_linear(firstPlayer.volume_db)
-	secondPlayer.volume_db = linear_to_db(0)
+	firstPlayer.volume_db = linear_to_db(0)
+	secondPlayer.volume_db = linear_to_db(volumeValue)
 	firstPlayer.play()	
 	secondPlayer.play()
 
@@ -196,7 +197,25 @@ func get_teleport_position():
 		var teleportPoints = teleport.get_sorted_by_distance()
 		return teleportPoints[1].position
 	return Vector2(-1, -1)
-		
+
+func get_closest_teleport_position():
+	if teleportsNode == null:
+		return Vector2(-1, -1)
+	for teleport in teleportsNode.get_children():
+		if teleport.get_distance_to_mc() > teleportEffectiveDistance:
+			continue
+		var teleportPoints = teleport.get_sorted_by_distance()
+		return teleportPoints[0].position
+	return Vector2(-1, -1)
+
+
+func move_to_closest_teleport():
+	var new_position = get_closest_teleport_position()
+	if new_position == Vector2(-1, -1):
+		return
+	position = new_position
+
+
 func inverse_current_state():
 	skinChangePlayer.play()
 	if currentState == State.WOLFSKIN:

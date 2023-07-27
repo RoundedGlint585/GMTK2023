@@ -190,6 +190,7 @@ position = Vector2(410, -164)
 [node name="Timer" type="Timer" parent="ColorRect"]
 
 [node name="EndPhraseTimer" type="Timer" parent="ColorRect"]
+wait_time = 0.3
 
 [node name="Indicator" type="Sprite2D" parent="ColorRect"]
 position = Vector2(138, 145)

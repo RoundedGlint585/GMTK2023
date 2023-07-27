@@ -99,6 +99,7 @@ func resolve_movement_relatively_to_mc():
 	direction = direction if mcCurrentState == State.SHEEPSKIN else -direction
 			
 	if distanceToMC < stopDistance and mcCurrentState == State.SHEEPSKIN:
+		play_animation_stay()
 		return
 	set_linear_velocity(direction * SPEED)
 	if mcCurrentState == State.SHEEPSKIN:
